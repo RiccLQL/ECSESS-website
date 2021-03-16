@@ -5,8 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import axios from 'axios';
 
-//axios.defaults.baseURL = 'https://ecsess-website.herokuapp.com';
-axios.defaults.baseURL = 'http://localhost:8081';
+axios.defaults.baseURL = 'https://ecsess-website.herokuapp.com';
 
 ReactDOM.render(
   <React.StrictMode>
