@@ -8,10 +8,10 @@
                 Visit our Facebook page
             </gb-social-button>
             <gb-social-button network="instagram" size="small" theme="light" class="social-media">
-                Visit our Facebook page
+                Follow us on Instagram
             </gb-social-button>
             <gb-social-button network="linkedin" size="small" theme="light" class="social-media">
-                Visit our Facebook page
+                Check out our LinkedIn
             </gb-social-button>
         </div>
     </div>

@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import FormField from "./FormField";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
 const EventsTab = () => {
+
+    const [value, setValue] = useState(0); // integer state
 
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
@@ -13,6 +15,8 @@ const EventsTab = () => {
             data.second_image = data.second_image[0].name;
             axios.post("/api/admin/events", data);
         });
+
+        setValue(value === 0 ? 1 : 0);
     };
 
     return (
