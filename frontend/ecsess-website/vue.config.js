@@ -8,6 +8,7 @@ module.exports = {
                 secure: false,
                 pathRewrite: {'^/api': '/api'}
             }
-        }
+        },
+        stats: 'errors-only',
     }
 }

@@ -5,12 +5,12 @@ import routes from "./routes/routes.js";
 import $ from "jquery";
 import VueFormulate from '@braid/vue-formulate';
 import vuesocial from "@growthbunker/vuesocial";
-import axios from "axios";
+//import axios from "axios";
 
 Vue.config.productionTip = false;
 window.$ = $;
 
-axios.defaults.baseURL = "https://ecsess-website.herokuapp.com";
+//axios.defaults.baseURL = "https://ecsess-website.herokuapp.com";
 
 Vue.use(VueRouter);
 const router = new VueRouter({
