@@ -29,19 +29,19 @@ const NewsTab = () => {
                 <li className="grid-element" key={newsList[i].id}>
                     <div className="grid-panel">
                         <p id="member-name" className="grid-element-name">{newsList[i].name}</p>
-                        <button onClick={((e) => deleteNews(e, newsList[i].id))}>Delete</button>
+                        <button className="deleteButton" onClick={((e) => deleteNews(e, newsList[i].id))}>Delete</button>
                     </div>
                 </li>
             )
         }
     }
-    const [, setValue] = useState(0); // integer state
+    const [value, setValue] = useState(0); // integer state
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
         data.image = data.image[0].name;
         axios.post("/api/admin/home/news", data);
 
-        setValue(value => value + 1); // update the state to force render
+        setValue(value === 0 ? 1 : 0); // update the state to force render
     };
 
     return (
