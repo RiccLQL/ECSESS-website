@@ -1,3 +1,5 @@
+@import '../colors/colors';
+
 .formulate-input {
     // global wrapper styles
     all: unset;
@@ -14,7 +16,7 @@
       // global label styles
       font-weight: 400;
       font-size: 120%;
-      color: darkgreen;
+      color: $darkaccent;
     }
   
     .formulate-input-element {
@@ -30,7 +32,7 @@
       list-style: none;
       font-size: 90%;
       font-weight: 600;
-      color: darkblue;
+      color: $darktext;
     }
   
     .formulate-input-error,
@@ -49,7 +51,7 @@
       input {
         // Style all text-like input elements
         all: unset;
-        background-color: white;
+        background-color: $darkinput;
         height: 2em;
         width: 60vw;
         font-size: 120%;
@@ -78,7 +80,7 @@
       textarea {
         // Style textareas
         all: unset;
-        background-color: white;
+        background-color: $darkinput;
         height: 20em;
         width: 60vw;
         font-size: 100%;

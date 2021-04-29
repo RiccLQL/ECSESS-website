@@ -29,7 +29,6 @@ export default {
     },
     beforeCreate () {
         axios.get(`/api/user/events/${this.$route.params.elementId}`).then((response) => {
-            console.log(response)
             this.element.id = response.data.events.id;
             this.element.name = response.data.events.name;
             this.element.image = response.data.events.image;
@@ -40,7 +39,6 @@ export default {
         window.scrollTo(0,0);
         window.addEventListener("scroll", function () {
             if (window.scrollY <= 200 && document.getElementById("element-body") !== null) {
-                console.log(window.scrollY)
                 document.getElementById("element-body").style.top = (100 - window.scrollY / 4) + 'vh';
             }
     });

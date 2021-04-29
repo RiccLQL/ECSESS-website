@@ -169,7 +169,6 @@ const getEventsByCategory = async (req, res, next) => {
 
     try {
         const events = await getEventsByCategoryService(req.params.id);
-        console.log("chazzz: " + JSON.stringify(events))
         if (events) {
             return res.status(200).json({
                 success: true,
