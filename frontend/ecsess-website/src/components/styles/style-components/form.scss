@@ -1,58 +1,139 @@
-@import '../colors/colors';
+@import "../colors/colors";
 
 .formulate-input {
-    // global wrapper styles
-    all: unset;
-    margin-bottom: 0.5em;
-    margin-top: 0.5em;
-    font-family: 'Montserrat';
-    margin-top: 1em;
-    margin-left: 2em;
-    margin-right: 2em;
-    justify-content: center;
-    align-items: center;
+  // global wrapper styles
+  all: unset;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+  font-family: "Montserrat";
+  margin-top: 1em;
+  margin-left: 2em;
+  margin-right: 2em;
+  justify-content: center;
+  align-items: center;
 
-    .formulate-input-label {
-      // global label styles
-      font-weight: 400;
-      font-size: 120%;
-      color: $darkaccent;
-    }
-  
-    .formulate-input-element {
-      // Global field-level wrapper styles
-    }
-  
-    .formulate-input-help {
-      // Global help text styles
-    }
-  
-    .formulate-input-errors {
-      // Global error message list wrapper
-      list-style: none;
-      font-size: 90%;
-      font-weight: 600;
-      color: $darktext;
-    }
-  
-    .formulate-input-error,
-    .formulate-file-upload-error {
-      // Error message styles
-    }
-  
-    .formulate-input-group-item {
-      // Group of items (like list of checkboxes) wrapper
-    }
-  
+  .formulate-input-label {
+    // global label styles
+    font-weight: 400;
+    font-size: 120%;
+    color: $darktext;
+  }
+
+  .formulate-input-element {
+    // Global field-level wrapper styles
+  }
+
+  .formulate-input-help {
+    // Global help text styles
+  }
+
+  .formulate-input-errors {
+    // Global error message list wrapper
+    list-style: none;
+    font-size: 90%;
+    font-weight: 600;
+    color: $darktext;
+  }
+
+  .formulate-input-error,
+  .formulate-file-upload-error {
+    // Error message styles
+  }
+
+  .formulate-input-group-item {
+    // Group of items (like list of checkboxes) wrapper
+  }
+
   // Text inputs
   // -----------------------------------------------------------------------------
-  
-    &[data-classification='text'] {
+
+  &[data-classification="text"] {
+    input {
+      // Style all text-like input elements
+      all: unset;
+      background-color: $darkinput;
+      height: 2em;
+      width: 60vw;
+      font-size: 120%;
+      font-weight: 300;
+      border-radius: 0.5em;
+      padding-left: 0.5em;
+      padding-right: 0.5em;
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+    }
+  }
+
+  // Slider inputs
+  // -----------------------------------------------------------------------------
+
+  &[data-classification="slider"] {
+    input {
+      // Style range inputs
+    }
+  }
+
+  // Textarea inputs
+  // -----------------------------------------------------------------------------
+
+  &[data-classification="textarea"] {
+    textarea {
+      // Style textareas
+      all: unset;
+      background-color: $darkinput;
+      height: 20em;
+      width: 60vw;
+      font-size: 100%;
+      font-weight: 400;
+      border-radius: 0.5em;
+      padding-top: 0.5em;
+      padding-left: 0.5em;
+      padding-right: 0.5em;
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+    }
+  }
+
+  // Button inputs
+  // -----------------------------------------------------------------------------
+
+  &[data-classification="button"] {
+    button {
+      // Style button inputs
+      padding: 1em;
+      margin-bottom: 2em;
+    }
+  }
+
+  // Select lists
+  // -----------------------------------------------------------------------------
+
+  &[data-classification="select"] {
+    select {
+      // Style select lists
+    }
+  }
+
+  // Box inputs
+  // -----------------------------------------------------------------------------
+
+  &[data-classification="box"] {
+    .formulate-input-element {
+      // Box input (checkbox and radio) wrapper (might want flex here)
       input {
-        // Style all text-like input elements
+        // Style box element itself
+      }
+    }
+  }
+
+  // File inputs
+  // -----------------------------------------------------------------------------
+
+  &[data-classification="file"] {
+    .formulate-input-upload-area {
+      input {
+        // The actual upload element
         all: unset;
-        background-color: $darkinput;
-        height: 2em;
         width: 60vw;
         font-size: 120%;
         font-weight: 300;
@@ -63,128 +144,42 @@
         margin-bottom: 0.5em;
       }
     }
-  
-  // Slider inputs
-  // -----------------------------------------------------------------------------
-  
-  &[data-classification='slider'] {
-    input {
-      // Style range inputs
-    }
-  }
-  
-  // Textarea inputs
-  // -----------------------------------------------------------------------------
-  
-    &[data-classification='textarea'] {
-      textarea {
-        // Style textareas
-        all: unset;
-        background-color: $darkinput;
-        height: 20em;
-        width: 60vw;
-        font-size: 100%;
-        font-weight: 400;
-        border-radius: 0.5em;
-        padding-top: 0.5em;
-        padding-left: 0.5em;
-        padding-right: 0.5em;
-        margin-top: 0.5em;
-        margin-bottom: 0.5em;
-      }
-    }
-  
-    // Button inputs
-  // -----------------------------------------------------------------------------
-  
-  &[data-classification='button'] {
-    button {
-      // Style button inputs
-      padding: 1em;
-      margin-bottom: 2em;
-    }
-  }
-  
-  // Select lists
-  // -----------------------------------------------------------------------------
-  
-    &[data-classification='select'] {
-      select {
-       // Style select lists
-      }
-    }
-  
-  
-  // Box inputs
-  // -----------------------------------------------------------------------------
-  
-    &[data-classification='box'] {
-      .formulate-input-element {
-        // Box input (checkbox and radio) wrapper (might want flex here)
-        input {
-          // Style box element itself
-        }
-      }
-    }
-  
-  
-    // File inputs
-  // -----------------------------------------------------------------------------
-  
-    &[data-classification="file"] {
-      .formulate-input-upload-area {
-        input {
-          // The actual upload element
-          all: unset;
-          width: 60vw;
-          font-size: 120%;
-          font-weight: 300;
-          border-radius: 0.5em;
-          padding-left: 0.5em;
-          padding-right: 0.5em;
-          margin-top: 0.5em;
-          margin-bottom: 0.5em;
-        }
-      }
-    }
-  
-  
-  // Image uploads
-  // -----------------------------------------------------------------------------
-  
-    [data-type="image"] {
-      // image uploads
-    }
-  }
-  
-  
-  // Form-level errors
-  // -----------------------------------------------------------------------------
-  
-  .formulate-form-errors {
-  
-    .formulate-form-error {
-      // form errors (not specific to a field)
-    }
   }
 
+  // Image uploads
+  // -----------------------------------------------------------------------------
+
+  [data-type="image"] {
+    // image uploads
+  }
+}
+
+// Form-level errors
+// -----------------------------------------------------------------------------
+
+.formulate-form-errors {
+  .formulate-form-error {
+    // form errors (not specific to a field)
+  }
+}
+
 .form-wrapper {
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    margin-top: 2em;
-    margin-bottom: 2em;
-    text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  text-align: center;
 }
 
 .form-row {
-    justify-content: center;
-    align-items: center;
-    display: flex;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 #send-message {
-    margin-top: 2em;
-    margin-bottom: 2em;
+  margin-top: 2em;
+  margin-bottom: 2em;
 }
