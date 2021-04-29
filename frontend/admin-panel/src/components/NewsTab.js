@@ -3,6 +3,7 @@ import FormField from "./FormField";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import '../styles/Grid.css';
+import '../styles/Form.css';
 
 const NewsTab = () => {
 
@@ -58,7 +59,7 @@ const NewsTab = () => {
                 <FormField message="Blurb" name="blurb" enter={register({ required: true })} type="textarea"/>
                 <FormField message="Link" name="link" enter={register({ required: true })} type="text"/>
 
-                <input type="submit" />
+                <input className="submit-button" type="submit" />
             </form>
         </div>
     );

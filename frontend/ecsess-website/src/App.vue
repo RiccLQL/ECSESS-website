@@ -27,6 +27,7 @@ export default {
 
 <style lang="scss">
 @import "./components/styles/style-components/button.scss";
+@import "./components/styles/colors/colors";
 
 * {
   margin: 0;
@@ -40,7 +41,7 @@ export default {
 }
 
 body {
-  background-color: lightyellow;
+  background-color: $darkbackground;
 
 }
 

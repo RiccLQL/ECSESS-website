@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import '../styles/Grid.css';
 
 const ViewEventsTab = () => {
 
@@ -70,7 +71,6 @@ const ViewEventsTab = () => {
             eventsDisplay.push(<div className="grid-element" key={eventCategoriesList[i].name}>{eventsArray}</div>);
         }
     }
-    console.log(eventsDisplay)
 
     return (
         <div>

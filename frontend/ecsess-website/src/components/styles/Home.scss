@@ -7,6 +7,7 @@
 @import "./style-components/button.scss";
 @import "./style-components/carousel.scss";
 @import "./style-components/form.scss";
+@import './colors/colors';
 
 .home-page {
     width: 100%;
@@ -32,6 +33,6 @@
 
 .submit-livewire-info-pane {
     width: 80vw;
-    background-color: rgb(243, 243, 211);
+    background-color: $darkbackground;
     border-radius: 0.5em;
 }

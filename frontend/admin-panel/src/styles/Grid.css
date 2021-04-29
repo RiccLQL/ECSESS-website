@@ -11,6 +11,7 @@
     grid-auto-rows: minmax(3em, auto);
     list-style: none;
     width: 100%;
+    height: auto;
 }
 
 .grid-element {
@@ -19,6 +20,8 @@
     margin-left: 1.5em;
     margin-right: 1.5em;
     font-size: 80%;
+    font-weight: 500;
+    border-radius: 0.8em;
 }
 
 .grid-panel {
@@ -40,6 +43,7 @@
     margin: 1em;
     border-radius: 0.5em;
     padding: 0.5em;
+    font-weight: 200;
 }
 
 .grid-subelement-name {
