@@ -46,14 +46,12 @@ export default {
         submitHandler: function () {
             let data = new FormData();
             let imageFile = document.querySelector("#livewire-image");
-            console.log(imageFile.files[0])
             data.append('senderName', this.formData.senderName);
             data.append('senderOrganization', this.formData.senderOrganization);
             data.append('senderEmail', this.formData.senderEmail);
             data.append('subject', this.formData.subject);
             data.append('message', this.formData.message);
             data.append('image', imageFile.files[0]);
-            console.log(data);
             axios.post("/api/user/home/livewire/email", data, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             });

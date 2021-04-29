@@ -8,7 +8,8 @@ require("dotenv").config();
 const {
     PORT,
     TESTPORT,
-    BACKEND_DOMAIN,
+    USERFRONTEND_DOMAIN,
+    ADMINFRONTEND_DOMAIN,
     DATABASE_URL,
     EMAILHOST,
     EMAILPORT,
@@ -23,7 +24,8 @@ const config = {
     backend: {
         PORT,
         TESTPORT,
-        BACKEND_DOMAIN,
+        USERFRONTEND_DOMAIN,
+        ADMINFRONTEND_DOMAIN
     },
     database: {
         DATABASE_URL,

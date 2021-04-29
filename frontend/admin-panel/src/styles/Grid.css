@@ -11,32 +11,44 @@
     grid-auto-rows: minmax(3em, auto);
     list-style: none;
     width: 100%;
+    height: auto;
 }
 
 .grid-element {
+    background-color: #1a1d24;
     margin-bottom: 3em;
     margin-left: 1.5em;
     margin-right: 1.5em;
-    display: flex;
-    justify-content: center;
+    font-size: 80%;
+    font-weight: 500;
+    border-radius: 0.8em;
 }
 
 .grid-panel {
-    background-color: rgb(243, 243, 211);
-    padding: 1em;
-    align-content: center;
-    text-align: center;
-    width: 20em;
-    overflow-wrap:break-word;
+    padding: 0.5em;
 }
 
 .grid-element-name {
-    font-family: 'Montserrat';
 }
 
 .grid-element-pic {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    transition: all 0.3s;
+}
+
+.grid-subelement {
+
+}
+
+.grid-subpanel {
+    background-color: #15181e;
+    margin: 1em;
+    border-radius: 0.5em;
+    padding: 0.5em;
+    font-weight: 200;
+}
+
+.grid-subelement-name {
+}
+
+.deleteButton:hover {
+    background-color: tomato;
 }

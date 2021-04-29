@@ -28,8 +28,6 @@ const getNews = async (req, res, next) => {
 
 const postLivewireEmail = async (req, res, next) => {
     try {
-        console.log(req.body);
-        console.log("yee: " + JSON.stringify(req.file));
         let formData = req.body;
         let transporter = nodemailer.createTransport({
             host: config.email.EMAILHOST,

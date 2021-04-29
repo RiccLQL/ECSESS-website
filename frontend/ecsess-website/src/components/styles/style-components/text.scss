@@ -1,8 +1,10 @@
+@import '../colors/colors';
+
 p {
     font-family: 'Montserrat', sans-serif;
     font-size: 100%;
     font-weight: 300;
-    color: darkgreen;
+    color: $darktext;
 }
 
 b {
@@ -33,7 +35,7 @@ h5 {
     font-family: "Montserrat", sans-serif;
     font-size: 80%;
     font-weight: 400;
-    color: salmon;
+    color: $darktext;
     -moz-user-select: none;
     -webkit-user-select: none;
     user-select: none;
@@ -43,7 +45,7 @@ h5 {
 .main-image-h5 {
     position: absolute;
     transform: translateY(3em);
-    color: white;
+    color: $darktext;
 }
 
     h3 {
@@ -59,7 +61,7 @@ h5 {
     }
 
     .green-h3 {
-        color: darkgreen;
+        color: $darktext;
         margin-bottom: 1em;
     }
 
@@ -67,18 +69,18 @@ h5 {
         font-family: 'Montserrat', sans-serif;
         font-size: 160%;
         font-weight: 400;
-        color: darkgreen;
+        color: $darktext;
     }
     
     .salmon-h4 {
-        color: darkgreen;
+        color: $darktext;
     }
 
 .imgtext {
     font-family: 'Montserrat', sans-serif;
     font-size: 160%;
     font-weight: 400;
-    color: white;
+    color: $darktext;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -86,5 +88,5 @@ h5 {
 }
 
 .white-p {
-    color: white;
+    color: $darktext;
 }

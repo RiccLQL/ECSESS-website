@@ -4,7 +4,6 @@ const config = require("../../config/config");
 
 const postAcademicEmail = async (req, res, next) => {
     try {
-        console.log(req.body);
         let formData = req.body;
         let transporter = nodemailer.createTransport({
             host: config.email.EMAILHOST,

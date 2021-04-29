@@ -3,6 +3,7 @@
 @import "./mainImage.scss";
 @import "./title.scss";
 @import "./pageBody.scss";
+@import '../colors/colors';
 
 .element-image {
     width: 100%;
@@ -14,6 +15,6 @@
     height: 100vh;
     top: 100vh;
     z-index: 100;
-    background-color: lightyellow;
+    background-color: $darkbackground;
     width: 100%;
 }

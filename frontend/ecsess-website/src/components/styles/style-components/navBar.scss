@@ -1,0 +1,60 @@
+@import "../colors/colors";
+
+.header-wrap {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0.7em;
+  padding-bottom: 0.7em;
+  padding-left: 1%;
+  padding-right: 1%;
+  width: 98%;
+  background-color: $darkcolorbackground;
+}
+
+.logo-top-left {
+  width: 20%;
+  justify-content: left;
+}
+
+.menubar-top-right {
+  width: 80%;
+  float: right;
+  justify-content: right;
+}
+
+.ecsess-logo {
+  height: 4.5em;
+  width: auto;
+  margin-left: 1em;
+}
+
+.menu-list {
+  list-style: unset;
+  text-align: right;
+}
+
+.menu-entry {
+  text-decoration: unset;
+  display: inline-block;
+  font-family: "Montserrat", sans-serif;
+  font-size: 120%;
+  font-weight: 300;
+  color: $darktext;
+  padding: 0.8em;
+  padding-left: 1em;
+  padding-right: 1em;
+  transition: 0.3s;
+  background-size: 100% 200%;
+  background-image: linear-gradient(to bottom, transparent 50%, $darkhover 50%);
+}
+
+.menu-entry:hover {
+  background-position: 0% 100%;
+}
+
+.navbar {
+  z-index: 5;
+}

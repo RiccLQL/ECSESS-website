@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import '../styles/Form.css';
 
 
 const FormField = (props) => {
@@ -16,7 +17,7 @@ const FormField = (props) => {
         };
 
         fetchEC();
-    })
+    }, [])
     let eventCategoryList = []
     if (props.type === "select") {
         const ECList = eventCategories;

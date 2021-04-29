@@ -1,3 +1,5 @@
+@import '../colors/colors';
+
 .slideshow-display {
     display: flex;
     flex-direction: row;
@@ -15,7 +17,7 @@
     width: 33%;
     text-align: center;
     padding: 0;
-    color: white;
+    color: $darktext;
     position: relative;
     
 }
@@ -55,7 +57,7 @@
     justify-content: center; // horizontally centers single line items
     text-align: center; // optional, but helps horizontally center text that breaks into multiple lines
     transition: all 0.3s;
-    margin-bottom: 0.5em;
+    margin-bottom: 2em;
 }
 
 .slideshow-panel-subelements {
@@ -75,7 +77,7 @@
     margin-bottom: 2px;
     text-align: center;
     padding: 0;
-    color: white;
+    color: $darktext;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -120,5 +122,5 @@
 .slideshow-a {
     all: unset;
     text-decoration: none;
-    color: white;
+    color: $darktext;
 }
