@@ -2,6 +2,7 @@ import React from "react";
 import FormField from "./FormField";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import '../styles/Form.css';
 
 const EventCategoriesTab = () => {
 
@@ -17,7 +18,7 @@ const EventCategoriesTab = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <FormField message="Event Category Name" name="event_category_name" enter={register({ required: true })} type="text"/>
                 <FormField message="Image" name="image" enter={register({ required: true })} type="file"/>
-                <input type="submit" />
+                <input className="submit-button" type="submit" />
             </form>
         </div>
     );

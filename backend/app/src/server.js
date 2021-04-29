@@ -31,7 +31,7 @@ const app = express();
 //CORS
 app.use(
     cors({
-        origin: config.backend.BACKEND_DOMAIN,
+        origin: config.backend.USERFRONTEND_DOMAIN,
         methods: "GET,PUT,POST,DELETE",
     })
 );
@@ -73,7 +73,6 @@ const uploadToAssets = multer({
 
 //initialize sequelize
 const models = sequelize(Sequelize, config);
-console.log(models);
 module.exports = { models, upload, uploadToAssets};
 
 //API ROUTES

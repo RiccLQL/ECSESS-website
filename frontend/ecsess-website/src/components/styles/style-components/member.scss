@@ -1,3 +1,5 @@
+@import '../colors/colors';
+
 .members-list-wrapper {
     display: flex;
     align-items: center;
@@ -22,7 +24,7 @@
 }
 
 .member-panel {
-    background-color: rgb(243, 243, 211);
+    background-color: $darkmain;
     padding: 1em;
     align-content: center;
     text-align: center;
@@ -43,13 +45,13 @@
 
 .member-blurb {
     position: absolute;
-    color: white;
+    color: $darktext;
     transition: all 0.3s;
 }
 
 .member-email{
     
-    color: darkgreen;
+    color: $darktext;
     font-weight: 400;
     padding: 0.5em;
     border-radius: 0.5em;
@@ -57,7 +59,7 @@
 }
 
 .member-email:hover {
-    background-color: rgb(205, 241, 188);
+    background-color: $darkhover;
 }
 
 .image-description-flip-wrapper {

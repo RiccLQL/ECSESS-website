@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import FormField from "./FormField";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import '../styles/Form.css';
 
 const EventsTab = () => {
 
@@ -30,7 +31,7 @@ const EventsTab = () => {
                 <FormField message="Second Image" name="second_image" enter={register({ required: true })} type="file"/>
                 <FormField message="Event Category" name="event_category" enter={register({ required: true })} type="select"/>
 
-                <input type="submit" />
+                <input className="submit-button" type="submit" />
             </form>
         </div>
     );

@@ -1,3 +1,5 @@
+@import '../colors/colors';
+
 .entity-wrapper {
     align-items: center;
     justify-content: center;
@@ -22,7 +24,7 @@
     border-radius: 0.5em;
     padding-top: 3em;
     padding-bottom: 3em;
-    background-color: rgb(243, 243, 211);
+    background-color: $darkbackground;
     text-align: center;
 }
 

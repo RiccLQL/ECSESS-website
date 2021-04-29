@@ -1,3 +1,4 @@
+@import '../colors/colors';
 
 .carousel-slide {
     display: flex;
@@ -11,5 +12,5 @@
 
 .carousel-text {
     position: absolute;
-    color: white;
+    color: $darktext;
 }

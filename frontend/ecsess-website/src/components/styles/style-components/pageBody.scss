@@ -1,7 +1,9 @@
+@import '../colors/colors';
+
 .page-body {
     position: absolute;
     width: 100%;
     z-index: -1;
     top: 100vh;
-    background-color: lightyellow;
+    background-color: $darkbackground;
   }
