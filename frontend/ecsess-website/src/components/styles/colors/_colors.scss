@@ -1,12 +1,12 @@
 //dark theme
-$darkbackground: #292929;
-$darkmain: #3b3b3b;
+$darkbackground: #363a41;
+$darkmain: #26292f;
 $darktext: #ffffff;
 $darkaccent: #00904b;
 $darkcolorbackground: #005f31;
 $darkplaceholder: #d9d0a4;
-$darkinput: #666666;
-$darkhover: #61616186;
+$darkinput: #4f5662;
+$darkhover: #29292986;
 
 //light theme
 $lightbackground: #ffffff;
@@ -15,3 +15,13 @@ $lighttext: #272727;
 $lightaccent: #41ba80;
 $lightplaceholder: #5ea36d;
 $lightinput: #ffffff;
+
+//actual
+$background: $darkbackground;
+$main: $darkmain;
+$text: $darktext;
+$accent: $darkaccent;
+$colorbackground: $darkcolorbackground;
+$placeholder: $darkplaceholder;
+$input: $darkinput;
+$hover: $darkhover;

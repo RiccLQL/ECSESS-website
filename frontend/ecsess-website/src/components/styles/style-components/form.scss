@@ -14,8 +14,8 @@
 
   .formulate-input-label {
     // global label styles
-    font-weight: 400;
-    font-size: 120%;
+    font-weight: 750;
+    font-size: 150%;
     color: $darktext;
   }
 
@@ -51,6 +51,7 @@
     input {
       // Style all text-like input elements
       all: unset;
+      color: $darktext;
       background-color: $darkinput;
       height: 2em;
       width: 60vw;
@@ -80,6 +81,7 @@
     textarea {
       // Style textareas
       all: unset;
+      color: $darktext;
       background-color: $darkinput;
       height: 20em;
       width: 60vw;
@@ -134,6 +136,7 @@
       input {
         // The actual upload element
         all: unset;
+        color: $darktext;
         width: 60vw;
         font-size: 120%;
         font-weight: 300;
