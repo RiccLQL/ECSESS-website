@@ -1,4 +1,5 @@
 @import "../colors/colors";
+@import "../text/fonts.scss";
 
 .header-wrap {
   position: absolute;
@@ -11,7 +12,7 @@
   padding-left: 1%;
   padding-right: 1%;
   width: 98%;
-  background-color: $darkcolorbackground;
+  background-color: $darkmain;
 }
 
 .logo-top-left {
@@ -39,9 +40,9 @@
 .menu-entry {
   text-decoration: unset;
   display: inline-block;
-  font-family: "Montserrat", sans-serif;
-  font-size: 120%;
-  font-weight: 300;
+  font-family: $defaultfont;
+  font-size: $medium-size;
+  font-weight: $light;;
   color: $darktext;
   padding: 0.8em;
   padding-left: 1em;

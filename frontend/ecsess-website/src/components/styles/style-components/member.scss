@@ -33,7 +33,7 @@
 }
 
 .member-name {
-    font-family: 'Montserrat';
+    font-family: $defaultfont;
 }
 
 .member-pic {
@@ -52,7 +52,7 @@
 .member-email{
     
     color: $darktext;
-    font-weight: 400;
+    font-weight: $medium;
     padding: 0.5em;
     border-radius: 0.5em;
     transition: all 0.3s;

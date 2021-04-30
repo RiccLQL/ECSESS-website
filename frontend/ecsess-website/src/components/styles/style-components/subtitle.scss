@@ -1,9 +1,10 @@
 @import "../colors/colors";
+@import "../text/fonts.scss";
 
 h2 {
-  font-family: "Montserrat", sans-serif;
-  font-size: 160%;
-  font-weight: 400;
+  font-family: $defaultfont;
+  font-size: $large-size;
+  font-weight: $medium;
   color: $darktext;
 }
 

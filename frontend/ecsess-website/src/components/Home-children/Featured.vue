@@ -2,7 +2,7 @@
     <div>
         <div id="subtitle" class="subtitle">
             <h2>Recent News</h2>
-            <h4 class="salmon-h4">(Drag sideways to scroll)</h4>
+            <h4>(Drag sideways to scroll)</h4>
         </div>
         <carousel>
             <slide v-for="(slide, i) in slides" :key="i" class="carousel-slide">

@@ -1,21 +1,20 @@
 @import "../colors/colors";
+@import "../text/fonts.scss";
 
 .formulate-input {
   // global wrapper styles
   all: unset;
   margin-bottom: 0.5em;
   margin-top: 0.5em;
-  font-family: "Montserrat";
+  font-family: $defaultfont;
   margin-top: 1em;
-  margin-left: 2em;
-  margin-right: 2em;
   justify-content: center;
   align-items: center;
 
   .formulate-input-label {
     // global label styles
-    font-weight: 750;
-    font-size: 150%;
+    font-weight: $medium;
+    font-size: $medium-size;
     color: $darktext;
   }
 
@@ -30,8 +29,8 @@
   .formulate-input-errors {
     // Global error message list wrapper
     list-style: none;
-    font-size: 90%;
-    font-weight: 600;
+    font-size: $small-size;
+    font-weight: $medium;
     color: $darktext;
   }
 
@@ -55,8 +54,8 @@
       background-color: $darkinput;
       height: 2em;
       width: 60vw;
-      font-size: 120%;
-      font-weight: 300;
+      font-size: $medium-size;
+      font-weight: $light;
       border-radius: 0.5em;
       padding-left: 0.5em;
       padding-right: 0.5em;
@@ -85,8 +84,8 @@
       background-color: $darkinput;
       height: 20em;
       width: 60vw;
-      font-size: 100%;
-      font-weight: 400;
+      font-size: $small-size;
+      font-weight: $medium;
       border-radius: 0.5em;
       padding-top: 0.5em;
       padding-left: 0.5em;
@@ -133,19 +132,7 @@
 
   &[data-classification="file"] {
     .formulate-input-upload-area {
-      input {
-        // The actual upload element
-        all: unset;
-        color: $darktext;
-        width: 60vw;
-        font-size: 120%;
-        font-weight: 300;
-        border-radius: 0.5em;
-        padding-left: 0.5em;
-        padding-right: 0.5em;
-        margin-top: 0.5em;
-        margin-bottom: 0.5em;
-      }
+      display: none;
     }
   }
 
@@ -185,4 +172,23 @@
 #send-message {
   margin-top: 2em;
   margin-bottom: 2em;
+}
+
+.form-button-hider {
+  all: unset;
+  background:$darkinput;
+  position:relative;
+  border-radius: 0.5em;
+  text-align:center;
+  float:left;
+  font-family: $defaultfont;
+  font-size: $small-size;
+  font-weight: $bold;
+  color: $darktext;
+  padding: 0.5em 0.8em;
+  transition: all 0.3s;
+}
+
+.form-button-hider:hover {
+  background-color: $darkhover;
 }
