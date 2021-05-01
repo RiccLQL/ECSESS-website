@@ -3,7 +3,7 @@
     <CouncilMainImage id="main-image" />
     <div id="council-page-body" class="page-body">
       <Index :indexItems="councilSections" />
-      <Members id="council-member-section" class="members" />
+      <CouncilMembers id="council-member-section" class="members" />
       <PublicDocuments id="public-documents-section" />
       <JoinCouncil id="join-council-section" />
     </div>
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import Members from "./Council-children/Members";
+import CouncilMembers from "./Council-children/CouncilMembers.vue";
 import CouncilMainImage from "./Council-children/CouncilMainImage";
 import PublicDocuments from "./Council-children/PublicDocuments";
 import JoinCouncil from "./Council-children/JoinCouncil";
@@ -20,7 +20,7 @@ import Index from "./General-children/Index.vue";
 export default {
   name: "Council",
   components: {
-    Members,
+    CouncilMembers,
     CouncilMainImage,
     Index,
     PublicDocuments,
