@@ -3,23 +3,24 @@
 @import "./style-components/text.scss";
 @import "./style-components/pageBody.scss";
 @import "./style-components/mainImage.scss";
+@import "./style-components/member.scss";
 
 .members {
-  z-index: 0;
+    z-index: 0;
 }
 
 .public-documents-body {
-  height: 60vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .join-ecsess-body {
-  height: 60vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
