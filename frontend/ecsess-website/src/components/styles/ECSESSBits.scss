@@ -3,20 +3,20 @@
 @import "./style-components/text.scss";
 @import "./style-components/pageBody.scss";
 @import "./style-components/mainImage.scss";
+@import "./style-components/member.scss";
 
-.members {
-  z-index: 0;
+.member-component {
+  margin-top: 5vh;
+  margin-bottom: 2vh;
 }
 
-.public-documents-body {
-  height: 60vh;
+.fyc-member-section {
   display: flex;
-  justify-content: center;
   align-items: center;
-  text-align: center;
+  flex-direction: column;
 }
 
-.join-ecsess-body {
+.join-fyc-body {
   height: 60vh;
   display: flex;
   justify-content: center;
