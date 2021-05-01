@@ -11,6 +11,17 @@
           <Members :displayMembers="fycMembers" class="member-component" />
         </div>
       </div>
+      <div
+        id="fyc-public-documents-section"
+        class="fyc-public-documents-section"
+      >
+        <div id="subtitle" class="subtitle">
+          <h2>ECSESS Bits Documents</h2>
+        </div>
+        <div class="fyc-public-documents-body">
+          <h3>Coming soon.</h3>
+        </div>
+      </div>
       <div id="join-fyc-section">
         <div id="subtitle" class="subtitle">
           <h2>Join The First-Year Council!</h2>
@@ -41,8 +52,14 @@ export default {
           href: "FYC-members"
         },
         {
-          name: "Join the First-Year Council!",
+          name: "ECSESS Bits Documents",
           id: 1,
+          image: "documents.jpg",
+          href: "fyc-public-documents-section"
+        },
+        {
+          name: "Join the First-Year Council!",
+          id: 2,
           image: "ECSESS_Lounge.jpg",
           href: "join-fyc-section"
         }
