@@ -3,12 +3,20 @@
 @import "./style-components/text.scss";
 @import "./style-components/pageBody.scss";
 @import "./style-components/mainImage.scss";
+@import "./style-components/member.scss";
 
-.members {
-  z-index: 0;
+.member-component {
+  margin-top: 5vh;
+  margin-bottom: 2vh;
 }
 
-.public-documents-body {
+.fyc-member-section {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.fyc-public-documents-body {
   height: 60vh;
   display: flex;
   justify-content: center;
@@ -16,7 +24,7 @@
   text-align: center;
 }
 
-.join-ecsess-body {
+.join-fyc-body {
   height: 60vh;
   display: flex;
   justify-content: center;
