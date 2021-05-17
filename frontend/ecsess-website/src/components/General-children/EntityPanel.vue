@@ -1,5 +1,5 @@
 <template>
-    <div class="entity-wrapper" @mouseover="hover()" @>
+    <div class="entity-wrapper" @mouseover="hover()">
         <div class="entity-screen" v-if="entity.id % 2 == 0">
             <div class="entity-screen-cover-photo-even">
                 <div class="img-container">
