@@ -28,7 +28,8 @@
                     <FormulateInput type="email" name="Your email" id="email" validation="required|email" class="form-input" label="What is your McGill email?" v-model="formData.senderEmail"/>
                     <FormulateInput type="text" name="subject" id="subject" validation="required" class="form-input" label="Message subject" v-model="formData.subject"/>
                     <FormulateInput type="textarea" name="message" validation="required" class="form-input" label="Type your message here" v-model="formData.message"/>
-                    <FormulateInput type="file" name="atachments" class="form-input" label="Add any attachments" v-model="formData.attachments"/>
+                    <FormulateInput type="file" name="atachments" class="form-input" id="academic-contact-attachments" v-model="formData.attachments"/>
+                    <input type="button" class="form-button-hider" value="Add any attachments" @click="clickFile()"/>
                     <FormulateInput type="submit" name="Send Message"/>
                     <h4>{{error}}</h4>
                 </div>
@@ -82,6 +83,9 @@ export default {
                 this.$forceUpdate();
             }
             
+        },
+        clickFile: function () {
+            document.getElementById('academic-contact-attachments').click();
         }
     }
 }

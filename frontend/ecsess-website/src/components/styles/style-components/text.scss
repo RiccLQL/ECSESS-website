@@ -1,14 +1,71 @@
 @import '../colors/colors';
+@import "../text/fonts.scss";
 
 p {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 100%;
-    font-weight: 300;
+    font-family: $defaultfont;
+    font-size: $small-size;
+    font-weight: $light;
     color: $darktext;
 }
 
 b {
-    font-weight: 500;
+    font-weight: $bold;
+}
+
+h1 {
+    all: unset;
+    font-family: $defaultfont;
+    font-size: $title-size;
+    font-weight: $medium;
+    color: $darktext;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    position: absolute;
+}
+
+h5 {
+    all: unset;
+    font-family: $defaultfont;
+    font-size: $small-size;
+    font-weight: $medium;
+    color: $darktext;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+h3 {
+    font-family: $defaultfont;
+    font-size: $medium-size;
+    font-weight: $medium;
+    color: $darktext;
+}
+
+h4 {
+    font-family: $defaultfont;
+    font-size: $small-size;
+    font-weight: $light;
+    color: $darktext;
+}
+
+h2 {
+    font-family: $defaultfont;
+    font-size: $large-size;
+    font-weight: $bold;
+    color: $darktext;
+}
+
+.imgtext {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.main-image-h5 {
+    position: absolute;
+    transform: translateY(3em);
 }
 
 .section-text {
@@ -28,65 +85,4 @@ b {
     text-align: center;
     padding-left: 1em;
     padding-right: 1em;
-}
-
-h5 {
-    all: unset;
-    font-family: "Montserrat", sans-serif;
-    font-size: 80%;
-    font-weight: 400;
-    color: $darktext;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    user-select: none;
-
-    }
-
-.main-image-h5 {
-    position: absolute;
-    transform: translateY(3em);
-    color: $darktext;
-}
-
-    h3 {
-        font-family: 'Montserrat';
-        font-size: 120%;
-        font-weight: 500;
-    }
-
-    h4 {
-        font-family: 'Montserrat';
-        font-size: 90%;
-        font-weight: 300;
-    }
-
-    .green-h3 {
-        color: $darktext;
-        margin-bottom: 1em;
-    }
-
-    h2 {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 160%;
-        font-weight: 400;
-        color: $darktext;
-    }
-    
-    .salmon-h4 {
-        color: $darktext;
-    }
-
-.imgtext {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 160%;
-    font-weight: 400;
-    color: $darktext;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.white-p {
-    color: $darktext;
 }
