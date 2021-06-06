@@ -1,60 +1,20 @@
 @import '../colors/colors';
 
-.entity-wrapper {
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-    padding-left: 15em;
-    padding-right: 15em;
-}
-
 .entity-screen {
     justify-content: center;
     align-items: center;
-    height: 40%;
-    width: 100%;
     overflow: hidden;
     display: flex;
     flex-direction: row;
-    margin-top: 3em;
-    margin-bottom: 3em;
-    margin-left: 10em;
-    margin-right: 10em;
-    border-radius: 0.5em;
-    padding-top: 3em;
-    padding-bottom: 3em;
-    background-color: $darkmain;
     text-align: center;
+    margin: 0 0 2.5% 0;
 }
 
-.entity-screen-cover-photo-even {
-    width: 50%;
-    position: relative;
-    margin-right: 0.5em;
-    margin-left: 2.5em;
-}
-
-.entity-screen-description-even {
-    width: 50%;
-    margin-left: 0.5em;
-    margin-right: 2.5em;
-}
-
-.entity-screen-cover-photo-odd {
-    width: 50%;
-    position: relative;
-    margin-right: 2.5em;
-    margin-left: 0.5em;
-}
-
-.entity-screen-description-odd {
-    width: 50%;
-    margin-left: 2.5em;
-    margin-right: 0.5em;
-}
-
-.large-img {
+.entity-screen-cover-photo {
     width: 100%;
-    border-radius: 0.5em;
+    position: relative;
+}
+
+.entity-screen-description {
+    position: absolute;
 }

@@ -1,43 +1,25 @@
 <template>
-    <div class="entity-wrapper" @mouseover="hover()">
-        <div class="entity-screen" v-if="entity.id % 2 == 0">
-            <div class="entity-screen-cover-photo-even">
+    <div class="entity-wrapper" @mouseover="goToEntity()" @mouseleave="leaveEntity()">
+        <div class="entity-screen">
+            <div class="entity-screen-cover-photo">
                 <div class="img-container">
-                    <img :src="require('../../assets/'+entity.image)" alt="" class="large-img">
+                    <img :src="require('../../assets/'+entity.image)" alt="" class="large-img" :id="`entity-panel-${entity.id}`">
                 </div>
-               
             </div>
-            <div class="entity-screen-description-even">
+            <div class="entity-screen-description">
                 <div>
-                    <h3><b>{{entity.name}}</b></h3>
-                    <br>
-                    <p>
+                    <h3 v-if="toggled === false"><b>{{entity.name}}</b></h3>
+                    <p v-if="toggled === true">
                         {{entity.blurb}}
                     </p>
                     <br><br>
-                    <button @click="goToEntity(entity.id)">
-                        Learn More
-                    </button>
                 </div>
             </div>
         </div>
-        <div class="entity-screen" v-if="entity.id % 2 == 1">
-            <div class="entity-screen-description-odd">
+        <div class="entity-screen" >
+            <div class="entity-screen-description">
                 <div>
-                    <h3><b>{{entity.name}}</b></h3>
-                    <br>
-                    <p>
-                        {{entity.blurb}}
-                    </p>
-                    <br><br>
-                    <button @click="goToEntity(entity.id)">
-                        Learn More
-                    </button>
-                </div>
-            </div>
-            <div class="entity-screen-cover-photo-odd">
-                <div class="img-container">
-                    <img :src="require('../../assets/'+entity.image)" alt="" class="large-img">
+                    
                 </div>
             </div>
         </div>
@@ -48,9 +30,19 @@
 export default {
     name: "EntityPanel",
     props: [ "entity" ],
+    data () {
+        return {
+            toggled: false,
+        }
+    },
     methods: {
-        goToEntity: function(entityId) {
-            this.$router.push({ path: `/element/${entityId}` });
+        goToEntity: function() {
+            this.toggled = true;
+            document.getElementById(`entity-panel-${this.$props.entity.id}`).style.filter = 'blur(8px)';
+        },
+        leaveEntity: function() {
+            this.toggled = false;
+            document.getElementById(`entity-panel-${this.$props.entity.id}`).style.filter = 'unset';
         }
     }
 }
