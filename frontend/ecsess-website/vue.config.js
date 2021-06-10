@@ -10,5 +10,6 @@ module.exports = {
             }
         },
         stats: 'errors-only',
+        progress: false,
     }
 }

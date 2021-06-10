@@ -73,7 +73,7 @@ export default {
             this.formData.recipientName = recipient.name;
             this.formData.recipientEmail = recipient.email;
             this.selectedRecipient = i;
-            document.getElementById('acad-member-panel-' + i).style.border = "2px solid darkgreen";
+            document.getElementById('acad-member-panel-' + i).style.border = "2px solid #ffffff";
         },
         submitHandler: function () {
             if (this.selectedRecipient === -1) {

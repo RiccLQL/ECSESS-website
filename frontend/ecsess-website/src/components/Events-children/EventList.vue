@@ -3,9 +3,11 @@
         <div id="subtitle" class="subtitle">
             <h2>Browse ECSESS Events</h2>
         </div>
-        <div v-for="event in events" :key="event.name">
-            <!-- TODO add the text/pic and hover variations after -->
-            <EntityPanel :entity="event"/>
+        <div class="grid">
+            <div v-for="event in events" :key="event.name" class="grid-item">
+                <!-- TODO add the text/pic and hover variations after -->
+                <EntityPanel :entity="event"/>
+            </div>
         </div>
     </div>
 </template>
