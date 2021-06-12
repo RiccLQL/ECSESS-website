@@ -2,7 +2,7 @@
     <div class="page-cover flex-vertical centered">
         <div>
             <h1>{{title}}</h1>
-            <h2>{{subtitle.toUpperCase()}}</h2>
+            <h2 v-if="subtitle">{{subtitle.toUpperCase()}}</h2>
         </div>
     </div>
 </template>
@@ -20,9 +20,8 @@ import TextArea from "@/components/TextArea.vue";
     }
 })
 export default class PageCover extends Vue {
-    @Prop() private path!: string;
     @Prop() private title!: string;
-    @Prop() private subtitle!: string;
+    @Prop() private subtitle?: string;
     private coverImageSize: ImageSize = ImageSize.fullscreen;
 }
 </script>

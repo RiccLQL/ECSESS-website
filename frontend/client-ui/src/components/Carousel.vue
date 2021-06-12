@@ -63,8 +63,4 @@ export default class Carousel extends Vue {
         border-radius: 0.5rem;
         padding: 0 2rem 0 2rem;
     }
-
-    .fade-enter-active {
-        transition-delay: 0.15s;
-    }
 </style>
