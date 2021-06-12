@@ -1,5 +1,5 @@
 <template>
-    <div class="navbar">
+    <div class="navbar" :style="{ backgroundColor: colorToggle }">
         <div v-for="(route, key) in navBarRoutes" :key="key">
             <NavBarSingleOption v-if="route.path" :path="route.path" :text="route.name" @dropdown="toggleDropdown" :listId="key"/>
             <NavBarDropdown v-if="route.paths" :routes="route.paths" :text="route.name" @dropdown="toggleDropdown" :listId="key" :dropdown="dropdown"/>
@@ -8,10 +8,11 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Prop, Watch } from "vue-property-decorator";
 import NavBarSingleOption from "@/components/NavBarSingleOption.vue";
 import NavBarDropdown, { NavBarDropdownObject } from "@/components/NavBarDropdown.vue";
 import pathNames from "@/router/pathNames";
+import _colors from "@/styles/_colors.scss";
 
 interface NavBarRouteObject {
     name: string,
@@ -27,6 +28,21 @@ interface NavBarRouteObject {
     },
 })
 export default class Home extends Vue {
+    private colorToggle: string = _colors.darkbackground;
+
+    private scrollListener(event: Event): void {
+        if (window.scrollY > 0) { 
+            this.colorToggle = _colors.darkmain;
+        }
+        else {
+            this.colorToggle = _colors.darkbackground;
+        }
+    }
+
+    created() {
+        window.addEventListener("scroll", this.scrollListener);
+    }
+
     private dropdown: number = -1;
 
     // Navbar content
@@ -68,7 +84,10 @@ export default class Home extends Vue {
         justify-content: center;
         align-content: center;
         flex-direction: row;
-        background-color: $darkmain;
+        transition: all 0.3s ease;
+        width: 100%;
+        position: fixed;
+        top: 0;
     }
 
     .navbar-item {
@@ -76,31 +95,23 @@ export default class Home extends Vue {
         font-size: $medium-size;
         font-weight: $bold;
         padding: 0.5rem 1rem 0.5rem 1rem;
-        margin: 0.5rem 0.25rem 0.5rem 0.25rem;
+        margin: 0.3rem 0.25rem 0.3rem 0.25rem;
         border-radius: 0.2rem;
         cursor: pointer;
         transition: all 0.3s;
     }
 
     .navbar-item:hover {
-        background-color: $darkbackground;
+        background-color: $darkinput;
     }
 
     .navbar-dropdown {
         position: absolute;
-        z-index: 100;
         top: 4rem;
         background-color: $darkmain;
         padding: 1rem;
         border-radius: 0.2rem;
-    }
-
-    .dropdown-able {
-        display: flex;
-        flex-direction: column;
-        text-align: left;
-        justify-content: space-between;
-        align-items: center;
+        z-index: 1000;
     }
 
     .navbar-subitem {

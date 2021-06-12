@@ -8,7 +8,8 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 
 interface ImageSizeStyle {
-    width: string,
+    'max-width': string,
+    'max-height': string,
 }
 
 enum ImageSize {
@@ -31,13 +32,13 @@ export default class NavBarSingleOption extends Vue {
     get style(): ImageSizeStyle {
         switch(this.size) {
             case ImageSize.small:
-                return { width: "10rem" }
+                return { 'max-width': "10rem", 'max-height': "10rem" }
             case ImageSize.medium:
-                return { width: "20rem" }
+                return { 'max-width': "20rem", 'max-height': "20rem" }
             case ImageSize.large:
-                return { width: "40rem" }
+                return { 'max-width': "40rem", 'max-height': "40rem" }
             case ImageSize.fullscreen:
-                return { width: "100vw" }
+                return { 'max-width': "100vw", 'max-height': "100rem" }
         }
     }
 

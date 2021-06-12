@@ -9,6 +9,11 @@ const baseSlash: string = "/";
 
 const routes: Array<RouteConfig> = [
   {
+    path: baseSlash,
+    name: "Base",
+    redirect: pathNames.HOME,
+  },
+  {
     path: baseSlash + pathNames.HOME,
     name: "Home",
     component: Home,

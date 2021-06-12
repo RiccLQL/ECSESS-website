@@ -1,10 +1,9 @@
 <template>
     <div class="page-cover flex-vertical centered">
-        <div class="absolute">
+        <div>
             <h1>{{title}}</h1>
-            <TextArea />
+            <h2>{{subtitle.toUpperCase()}}</h2>
         </div>
-        <Picture :path="path" alt="Home Image" :size="coverImageSize"/>
     </div>
 </template>
 
@@ -23,14 +22,15 @@ import TextArea from "@/components/TextArea.vue";
 export default class PageCover extends Vue {
     @Prop() private path!: string;
     @Prop() private title!: string;
+    @Prop() private subtitle!: string;
     private coverImageSize: ImageSize = ImageSize.fullscreen;
 }
 </script>
 
 <style lang="scss" scoped>
     .page-cover {
-        width: 100vw;
-        max-height: 40vh;
+        width: 100%;
+        height: 70vh;
         overflow: hidden;
         user-select: none;
     }

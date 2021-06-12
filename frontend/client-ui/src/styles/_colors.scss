@@ -1,6 +1,6 @@
 //dark theme
-$darkbackground: #363a41;
-$darkmain: #26292f;
+$darkbackground: #26292f;
+$darkmain: #363a41;
 $darktext: #ffffff;
 $darkaccent: #00904b;
 $darkcolorbackground: #005f31;
@@ -25,3 +25,12 @@ $colorbackground: $darkcolorbackground;
 $placeholder: $darkplaceholder;
 $input: $darkinput;
 $hover: $darkhover;
+
+
+:export {
+    darkbackground: $darkbackground;
+    darkmain: $darkmain;
+    darktext: $darktext;
+    darkinput: $darkinput;
+    darkaccent: $darkaccent
+}

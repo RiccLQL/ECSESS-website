@@ -42,6 +42,37 @@ export default class App extends Vue {
   h1 {
     font-family: $defaultfont;
     color: $darktext;
+    font-size: $title-size;
+    font-weight: $light;
+    margin: 0;
+  }
+
+  h2 {
+    font-family: $defaultfont;
+    color: $darktext;
+    font-size: $medium-size;
+    font-weight: $medium;
+  }
+
+  h3 {
+    font-family: $defaultfont;
+    color: $darktext;
+    font-size: $large-size;
+    font-weight: $medium;
+    margin: 0;
+  }
+  h4 {
+    font-family: $defaultfont;
+    color: $darktext;
+    font-size: $medium-size;
+    font-weight: $bold;
+  }
+
+  p {
+    font-family: $defaultfont;
+    color: $darktext;
+    font-size: $small-size;
+    font-weight: $light;
   }
 
   //formatting
@@ -66,6 +97,73 @@ export default class App extends Vue {
     justify-content: center;
     align-items: center;
     flex-direction: row;
+  }
+
+  .space-between {
+    justify-content: space-between;
+    align-items: space-between;
+  }
+
+  .sixty {
+    width: 60%;
+  }
+
+  .fourty {
+    width: 40%;
+  }
+
+  .fifty {
+    width: 50%;
+  }
+
+  .top-layer {
+    z-index: 100;
+  }
+
+  .overflow-hidden {
+    overflow: hidden;
+  }
+
+  //transitions
+
+  .fade-enter-active {
+    transition: all 0.15s ease;
+  }
+
+  .fade-leave-active {
+      transition: all 0.15s ease;
+  }
+
+  .fade-enter {
+    opacity: 0;
+  } 
+  
+  .fade-leave-to {
+    opacity: 0;
+  }
+
+  .smooth-transition {
+    transition: all 0.3s ease;
+  }
+
+  //image filters
+
+  .black-and-white {
+    filter: grayscale(1);
+  }
+
+  .color-on-hover:hover {
+    filter: unset;
+  }
+
+  //pointers
+
+  .no-pointer-events {
+    pointer-events: none;
+  }
+
+  .cursor-pointer {
+    cursor: pointer;
   }
 
 </style>

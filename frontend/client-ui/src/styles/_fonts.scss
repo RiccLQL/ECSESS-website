@@ -7,7 +7,18 @@ $medium: 400;
 $bold: 600;
 
 //font sizes
-$small-size: 90%;
-$medium-size: 120%;
-$large-size: 160%;
-$title-size: 200%;
+$small-size: 0.9rem;
+$medium-size: 1rem;
+$large-size: 1.5rem;
+$title-size: 3rem;
+
+:export {
+    defaultfont: $defaultfont;
+    lightweight: $light;
+    mediumweight: $medium;
+    boldweight: $bold;
+    small-size: $small-size;
+    medium-size: $medium-size;
+    large-size: $large-size;
+    title-size: $title-size;
+}

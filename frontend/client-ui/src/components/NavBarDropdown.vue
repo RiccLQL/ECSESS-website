@@ -39,16 +39,12 @@ export default class NavBarDropdown extends Vue {
 
 <style lang="scss" scoped>
 
-.fade-enter-active {
-    transition: all 0.3s ease;
-}
-
-.fade-leave-active {
-    transition: all 0.3s ease;
-}
-
-.fade-enter, .fade-leave-to {
-  opacity: 0;
+.dropdown-able {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    justify-content: space-between;
+    align-items: center;
 }
 
 </style>
