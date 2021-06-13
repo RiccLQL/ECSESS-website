@@ -11,6 +11,9 @@ enum pathNames {
     WELLNESS = 'wellness',
     SOCIAL = 'social',
     OTHER = 'other',
+    JOIN = 'join',
+    DOCS = 'docs',
+    TECH = 'tech',
 }
 
 export default pathNames;

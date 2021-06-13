@@ -47,25 +47,32 @@ export default class Home extends Vue {
 
     // Navbar content
 
-    private homeRoute: NavBarRouteObject = { name: "Home", path: pathNames.HOME }
-    private councilRoute: NavBarRouteObject = { name: "Council", path: pathNames.COUNCIL }
+    private homeRoute: NavBarRouteObject = { name: "Home", path: pathNames.HOME };
+    private councilDropdown: NavBarDropdownObject[] = [
+        {path: `${pathNames.COUNCIL}`, text: "ECSESS Council"},
+        {path: `${pathNames.COUNCIL}/${pathNames.JOIN}`, text: "Join ECSESS"},
+        {path: `${pathNames.COUNCIL}/${pathNames.DOCS}`, text: "Council Documents"},
+    ]
+    private councilRoute: NavBarRouteObject = { name: "Council", paths: this.councilDropdown };
     private eventDropdown: NavBarDropdownObject[] = [
+        {path: `${pathNames.EVENTS}`, text: "Events Calendar"},
         {path: `${pathNames.EVENTS}/${pathNames.ACADEMIC}`, text: "Academic Events"}, 
         {path: `${pathNames.EVENTS}/${pathNames.INDUSTRY}`, text: "Industry & Networking Events"}, 
         {path: `${pathNames.EVENTS}/${pathNames.WELLNESS}`, text: "Wellness Events"},
         {path: `${pathNames.EVENTS}/${pathNames.SOCIAL}`, text: "Social Events"},
+        {path: `${pathNames.EVENTS}/${pathNames.TECH}`, text: "Technical Events"},
     ];
-    private eventRoute : NavBarRouteObject = { name: "Events", paths: this.eventDropdown }
+    private eventRoute : NavBarRouteObject = { name: "Events", paths: this.eventDropdown };
     private resourceDropdown: NavBarDropdownObject[] = [
         {path: `${pathNames.RESOURCES}/${pathNames.ACADEMIC}`, text: "Academic Resources"}, 
         {path: `${pathNames.RESOURCES}/${pathNames.INDUSTRY}`, text: "Industry Resources"}, 
         {path: `${pathNames.RESOURCES}/${pathNames.WELLNESS}`, text: "Mental Health Resources"},
         {path: `${pathNames.RESOURCES}/${pathNames.OTHER}`, text: "Other Resources"},
     ];
-    private resourceRoute : NavBarRouteObject = { name: "Resources", paths: this.resourceDropdown }
-    private photosRoute: NavBarRouteObject = { name: "Photos", path: pathNames.PHOTOS }
-    private fycRoute: NavBarRouteObject = { name: "ECSESSBits", path: pathNames.ECSESSBITS }
-    private spacesRoute: NavBarRouteObject = { name: "Student Spaces", path: pathNames.STUDENT_SPACES }
+    private resourceRoute : NavBarRouteObject = { name: "Resources", paths: this.resourceDropdown };
+    private photosRoute: NavBarRouteObject = { name: "Photos", path: pathNames.PHOTOS };
+    private fycRoute: NavBarRouteObject = { name: "ECSESSBits", path: pathNames.ECSESSBITS };
+    private spacesRoute: NavBarRouteObject = { name: "Student Spaces", path: pathNames.STUDENT_SPACES };
 
     private navBarRoutes: NavBarRouteObject[] = [
         this.homeRoute, this.councilRoute, this.eventRoute, this.resourceRoute, this.photosRoute, this.fycRoute, this.spacesRoute 
@@ -87,6 +94,7 @@ export default class Home extends Vue {
         transition: all 0.3s ease;
         width: 100%;
         position: fixed;
+        z-index: 1000;
         top: 0;
     }
 

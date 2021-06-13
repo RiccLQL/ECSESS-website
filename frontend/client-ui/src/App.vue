@@ -26,6 +26,10 @@ export default class App extends Vue {
 
   //general elements
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   a {
     text-decoration: none;
     color: $darktext;
@@ -85,6 +89,10 @@ export default class App extends Vue {
     position: absolute;
   }
 
+  .relative {
+    position: relative;
+  }
+
   .flex-vertical {
     display: flex;
     justify-content: center;
@@ -122,6 +130,16 @@ export default class App extends Vue {
 
   .overflow-hidden {
     overflow: hidden;
+  }
+
+  .full-width {
+    width: 100%;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    margin-bottom: 1rem;
   }
 
   //transitions

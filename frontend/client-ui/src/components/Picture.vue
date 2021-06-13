@@ -17,6 +17,13 @@ enum ImageSize {
     medium = "medium",
     large = "large",
     fullscreen = "fullscreen",
+    auto = "auto",
+}
+
+export interface ImageObject {
+    path: string,
+    alt: string;
+    size?: ImageSize,
 }
 
 export { ImageSize }
@@ -39,6 +46,8 @@ export default class NavBarSingleOption extends Vue {
                 return { 'max-width': "40rem", 'max-height': "40rem" }
             case ImageSize.fullscreen:
                 return { 'max-width': "100vw", 'max-height': "100rem" }
+            case ImageSize.auto:
+                return { 'max-width': '100%', 'max-height': '100%' }
         }
     }
 

@@ -17,6 +17,6 @@ export default class Subtitle extends Vue {
 
 <style lang="scss" scoped>
     .subtitle {
-        margin-bottom: 4rem;
+        margin-bottom: 3rem;
     }
 </style>

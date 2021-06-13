@@ -27,6 +27,7 @@ export default class Form extends Vue {
     }
 
     private handleSubmit(): void {
+        this.$emit("handleFormSubmit", this.formInstance);
     }
 }
 </script>
