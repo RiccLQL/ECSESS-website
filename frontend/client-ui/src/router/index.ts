@@ -67,6 +67,41 @@ const routes: Array<RouteConfig> = [
     name: "Academic Resources",
     component: () => import("../views/AcademicResources.vue"),
   },
+  {
+    path: baseSlash + pathNames.EVENTS,
+    name: "Upcoming Events",
+    component: () => import("../views/EventsCalendar.vue"),
+  },
+  {
+    path: baseSlash + pathNames.RESOURCES + baseSlash + pathNames.INDUSTRY,
+    name: "Industry Resources",
+    component: () => import("../views/IndustryResources.vue"),
+  },
+  {
+    path: baseSlash + pathNames.RESOURCES + baseSlash + pathNames.WELLNESS,
+    name: "Mental Health Resources",
+    component: () => import("../views/MentalHealthResources.vue"),
+  },
+  {
+    path: baseSlash + pathNames.RESOURCES + baseSlash + pathNames.OTHER,
+    name: "Other Resources",
+    component: () => import("../views/OtherResources.vue"),
+  },
+  {
+    path: baseSlash + pathNames.PHOTOS,
+    name: "ECSE Photo Archive",
+    component: () => import("../views/Photos.vue"),
+  },
+  {
+    path: baseSlash + pathNames.ECSESSBITS,
+    name: "ECSESSBits - ECSE First Year Council",
+    component: () => import("../views/ECSESSBits.vue"),
+  },
+  {
+    path: baseSlash + pathNames.STUDENT_SPACES,
+    name: "Student Spaces",
+    component: () => import("../views/StudentSpaces.vue"),
+  },
 ];
 
 const router = new VueRouter({

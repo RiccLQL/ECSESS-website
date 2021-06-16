@@ -8,14 +8,14 @@
                 <div class="fifty list-text">
                     <h4>{{listItem.title}}</h4>
                     <TextArea :text="listItem.description"/>
-                    <Button :clickParams="listItem.buttonLink" :color="buttonColor" :hoverable="hoverable" :size="buttonSize" v-if="listItem.button" :text="listItem.button" @handleClick="goToLink"/>
+                    <Button :clickParams="listItem.buttonLink" :color="buttonColor" hoverable="hoverable" :size="buttonSize" v-if="listItem.button" :text="listItem.button" @handleClick="goToLink"/>
                 </div>
             </div>
             <div v-else class="flex-horizontal full-width">
                 <div class="fifty list-text">
                     <h4>{{listItem.title}}</h4>
                     <TextArea :text="listItem.description"/>
-                    <Button :clickParams="listItem.buttonLink" :color="buttonColor" :hoverable="hoverable" :size="buttonSize" v-if="listItem.button" :text="listItem.button" @handleClick="goToLink"/>
+                    <Button :clickParams="listItem.buttonLink" :color="buttonColor" hoverable="hoverable" :size="buttonSize" v-if="listItem.button" :text="listItem.button" @handleClick="goToLink"/>
                 </div>
                 <div class="fifty list-image">
                     <Picture :alt="listItem.image.alt" :path="listItem.image.path" :size="listImageSize"/>

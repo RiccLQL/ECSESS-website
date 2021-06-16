@@ -3,8 +3,9 @@
         <textarea v-if="inputType === 'textarea'" :placeholder="placeholder" :type="inputType" :style="{ height: height }" required></textarea>
         <input v-else-if="inputType === 'submit'" class="interactive" :type="inputType"/>
         <div v-else-if="inputType === 'file'">
-            <input :type="inputType" :style="{ display: 'none' }" id="file-input" required/>
+            <input :type="inputType" :style="{ display: 'none' }" id="file-input" required v-on:change="onFileChanged"/>
             <Button :color="fileButtonColor" :size="fileButtonSize" :clickParams="selectFile" :text="placeholder" @handleClick="selectFile" hoverable="hoverable"/>
+            <p>{{fileName}}</p>
         </div>
         <input v-else v-model="inputValue" :placeholder="placeholder" :type="inputType" :style="{ height: height }" required/>
     </div>
@@ -16,11 +17,11 @@ import _colors from "@/styles/_colors.scss";
 import Button, { ButtonSizes } from "@/components/Button.vue";
 
 export interface InputObject {
-    name: string,
     placeholder: string,
-    value: string,
+    value: string | File,
     inputType: "button" | "checkbox" | "color" | "date" | "datetime-local" | "email" | "file" | "hidden" | "image" | "month" | "number" | "password" | "radio" | "range" | "reset" | "search" | "submit" | "tel" | "text" | "textarea" | "time" | "url" | "week",
-    height?: "20rem";
+    height?: "20rem",
+    name: string,
 }
 
 @Component({
@@ -30,7 +31,6 @@ export interface InputObject {
     }
 })
 export default class FormInput extends Vue {
-    @Prop() name!: string;
     @Prop() value!: string;
     @Prop() height?: string;
     @Prop() placeholder!: string;
@@ -39,6 +39,7 @@ export default class FormInput extends Vue {
 
     private fileButtonColor: string = _colors.darkinput;
     private fileButtonSize: ButtonSizes = ButtonSizes.medium;
+    private fileName: string | null = null;
 
     get inputValue() {
         return this.value;
@@ -52,8 +53,15 @@ export default class FormInput extends Vue {
         this.inputValue = this.value;
     }
     
-    private selectFile() {
+    private selectFile(): void {
         document.getElementById("file-input")?.click();
+    }
+
+    private onFileChanged(event: any): void {
+        const files: FileList = event.target.files;
+        let result: File = <File>files.item(0);
+        this.fileName = result.name;
+        this.$emit('changeValue', result, this.index);
     }
 
 }

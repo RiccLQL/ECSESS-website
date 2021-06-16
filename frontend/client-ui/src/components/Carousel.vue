@@ -41,7 +41,7 @@ export default class Carousel extends Vue {
     private carouselRotationIndex: number = 0;
     private carouselMaxRotation: number = this.slides.length - 1;
 
-    private timer!: number;
+    private timer!: NodeJS.Timeout;
 
     private rotate(direction: string): void {
         if (this.carouselMaxRotation > 0) {

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="overflow-hidden">
         <img :src="path" :alt="alt" :style="style"/>
     </div>
 </template>
@@ -45,7 +45,7 @@ export default class NavBarSingleOption extends Vue {
             case ImageSize.large:
                 return { 'max-width': "40rem", 'max-height': "40rem" }
             case ImageSize.fullscreen:
-                return { 'max-width': "100vw", 'max-height': "100rem" }
+                return { 'max-width': "100vw", 'max-height': "100vh" }
             case ImageSize.auto:
                 return { 'max-width': '100%', 'max-height': '100%' }
         }

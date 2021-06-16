@@ -1,7 +1,7 @@
 <template>
     <div class="flex-vertical">
         <form class="flex-vertical centered" @submit.prevent="handleSubmit" >
-            <FormInput v-for="(input, index) in form" :key="index" :inputType="input.inputType" :placeholder="input.placeholder" :value="input.value" :name="input.name" :index="index" :height="input.height" @changeValue="onValueChange"/>
+            <FormInput v-for="(input, index) in value" :key="index" :inputType="input.inputType" :placeholder="input.placeholder" :value="input.value" :index="index" :height="input.height" @changeValue="onValueChange"/>
             <FormInput inputType="submit" />
         </form>
     </div>
@@ -19,15 +19,14 @@ import FormInput, { InputObject } from "@/components/FormInput.vue"
     }
 })
 export default class Form extends Vue {
-    @Prop() form!: InputObject[];
-    private formInstance: InputObject[] = this.form;
+    @Prop() value!: InputObject[];
 
-    private onValueChange(inputValue: string, index: number ): void {
-        this.formInstance[index].value = inputValue;
+    private onValueChange(inputValue: string | File, index: number ): void {
+        this.value[index].value = inputValue;
     }
 
     private handleSubmit(): void {
-        this.$emit("handleFormSubmit", this.formInstance);
+        this.$emit("handleFormSubmit", this.value);
     }
 }
 </script>

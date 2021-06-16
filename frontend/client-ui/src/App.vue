@@ -2,17 +2,20 @@
   <div id="app">
     <NavBar/>
     <router-view />
+    <BottomBar />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import NavBar from "@/components/NavBar.vue";
+import BottomBar from "@/components/BottomBar.vue";
 
 @Component({
   name: "App",
   components: {
     NavBar,
+    BottomBar,
   },
 })
 
@@ -85,6 +88,10 @@ export default class App extends Vue {
     text-align: center;
   }
 
+  .left {
+    text-align: left;
+  }
+
   .absolute {
     position: absolute;
   }
@@ -124,6 +131,10 @@ export default class App extends Vue {
     width: 50%;
   }
 
+  .twenty {
+    width: 20%;
+  }
+
   .top-layer {
     z-index: 100;
   }
@@ -140,6 +151,14 @@ export default class App extends Vue {
     display: grid;
     grid-template-columns: auto auto auto;
     margin-bottom: 1rem;
+  }
+
+  .behind {
+    z-index: -1;
+  }
+
+  .margin-bottom {
+    margin-bottom: 2rem;
   }
 
   //transitions

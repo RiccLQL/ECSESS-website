@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button :class="hoverable" :style="{ backgroundColor: color, padding: size }" @click="handleClick()">{{text}}</button>
+        <button :class="hoverable" :style="{ backgroundColor: color, padding: size }" @click="handleClick()" type="button">{{text}}</button>
     </div>
 </template>
 
