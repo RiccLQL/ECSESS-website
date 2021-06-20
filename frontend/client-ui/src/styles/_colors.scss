@@ -16,21 +16,16 @@ $lightaccent: #41ba80;
 $lightplaceholder: #5ea36d;
 $lightinput: #ffffff;
 
-//actual
-$background: $darkbackground;
-$main: $darkmain;
-$text: $darktext;
-$accent: $darkaccent;
-$colorbackground: $darkcolorbackground;
-$placeholder: $darkplaceholder;
-$input: $darkinput;
-$hover: $darkhover;
-
-
 :export {
-    darkbackground: $darkbackground;
-    darkmain: $darkmain;
-    darktext: $darktext;
-    darkinput: $darkinput;
-    darkaccent: $darkaccent;
+  darkbackground: $darkbackground;
+  darkmain: $darkmain;
+  darktext: $darktext;
+  darkinput: $darkinput;
+  darkaccent: $darkaccent;
+  // ---------------------------
+  lightbackground: $lightbackground;
+  lightmain: $lightmain;
+  lighttext: $lighttext;
+  lightaccent: $lightaccent;
+  lightinput: $lightinput;
 }

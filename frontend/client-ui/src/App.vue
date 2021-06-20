@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <NavBar/>
+    <NavBar />
     <router-view />
     <BottomBar />
   </div>
@@ -18,189 +18,183 @@ import BottomBar from "@/components/BottomBar.vue";
     BottomBar,
   },
 })
-
-export default class App extends Vue {
-
-}
-
+export default class App extends Vue {}
 </script>
 
 <style lang="scss">
+//general elements
 
-  //general elements
+html {
+  scroll-behavior: smooth;
+}
 
-  html {
-    scroll-behavior: smooth;
-  }
+a {
+  text-decoration: none;
+  color: $darktext;
+  user-select: none;
+}
 
-  a {
-    text-decoration: none;
-    color: $darktext;
-    user-select: none;
-  }
+body {
+  margin: 0;
+  background-color: $darkbackground;
+}
 
-  body {
-    margin: 0;
-    background-color: $darkbackground;
-  }
+//text stuff
 
-  //text stuff
+h1 {
+  font-family: $defaultfont;
+  color: $darktext;
+  font-size: $title-size;
+  font-weight: $light;
+  margin: 0;
+}
 
-  h1 {
-    font-family: $defaultfont;
-    color: $darktext;
-    font-size: $title-size;
-    font-weight: $light;
-    margin: 0;
-  }
+h2 {
+  font-family: $defaultfont;
+  color: $darktext;
+  font-size: $medium-size;
+  font-weight: $medium;
+}
 
-  h2 {
-    font-family: $defaultfont;
-    color: $darktext;
-    font-size: $medium-size;
-    font-weight: $medium;
-  }
+h3 {
+  font-family: $defaultfont;
+  color: $darktext;
+  font-size: $large-size;
+  font-weight: $medium;
+  margin: 0;
+}
+h4 {
+  font-family: $defaultfont;
+  color: $darktext;
+  font-size: $medium-size;
+  font-weight: $bold;
+}
 
-  h3 {
-    font-family: $defaultfont;
-    color: $darktext;
-    font-size: $large-size;
-    font-weight: $medium;
-    margin: 0;
-  }
-  h4 {
-    font-family: $defaultfont;
-    color: $darktext;
-    font-size: $medium-size;
-    font-weight: $bold;
-  }
+p {
+  font-family: $defaultfont;
+  color: $darktext;
+  font-size: $small-size;
+  font-weight: $light;
+}
 
-  p {
-    font-family: $defaultfont;
-    color: $darktext;
-    font-size: $small-size;
-    font-weight: $light;
-  }
+//formatting
 
-  //formatting
+.centered {
+  text-align: center;
+}
 
-  .centered {
-    text-align: center;
-  }
+.left {
+  text-align: left;
+}
 
-  .left {
-    text-align: left;
-  }
+.absolute {
+  position: absolute;
+}
 
-  .absolute {
-    position: absolute;
-  }
+.relative {
+  position: relative;
+}
 
-  .relative {
-    position: relative;
-  }
+.flex-vertical {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
-  .flex-vertical {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
+.flex-horizontal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
 
-  .flex-horizontal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-  }
+.space-between {
+  justify-content: space-between;
+  align-items: space-between;
+}
 
-  .space-between {
-    justify-content: space-between;
-    align-items: space-between;
-  }
+.sixty {
+  width: 60%;
+}
 
-  .sixty {
-    width: 60%;
-  }
+.fourty {
+  width: 40%;
+}
 
-  .fourty {
-    width: 40%;
-  }
+.fifty {
+  width: 50%;
+}
 
-  .fifty {
-    width: 50%;
-  }
+.twenty {
+  width: 20%;
+}
 
-  .twenty {
-    width: 20%;
-  }
+.top-layer {
+  z-index: 100;
+}
 
-  .top-layer {
-    z-index: 100;
-  }
+.overflow-hidden {
+  overflow: hidden;
+}
 
-  .overflow-hidden {
-    overflow: hidden;
-  }
+.full-width {
+  width: 100%;
+}
 
-  .full-width {
-    width: 100%;
-  }
+.grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  margin-bottom: 1rem;
+}
 
-  .grid {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    margin-bottom: 1rem;
-  }
+.behind {
+  z-index: -1;
+}
 
-  .behind {
-    z-index: -1;
-  }
+.margin-bottom {
+  margin-bottom: 2rem;
+}
 
-  .margin-bottom {
-    margin-bottom: 2rem;
-  }
+//transitions
 
-  //transitions
+.fade-enter-active {
+  transition: all 0.15s ease;
+}
 
-  .fade-enter-active {
-    transition: all 0.15s ease;
-  }
+.fade-leave-active {
+  transition: all 0.15s ease;
+}
 
-  .fade-leave-active {
-      transition: all 0.15s ease;
-  }
+.fade-enter {
+  opacity: 0;
+}
 
-  .fade-enter {
-    opacity: 0;
-  } 
-  
-  .fade-leave-to {
-    opacity: 0;
-  }
+.fade-leave-to {
+  opacity: 0;
+}
 
-  .smooth-transition {
-    transition: all 0.3s ease;
-  }
+.smooth-transition {
+  transition: all 0.3s ease;
+}
 
-  //image filters
+//image filters
 
-  .black-and-white {
-    filter: grayscale(1);
-  }
+.black-and-white {
+  filter: grayscale(1);
+}
 
-  .color-on-hover:hover {
-    filter: unset;
-  }
+.color-on-hover:hover {
+  filter: unset;
+}
 
-  //pointers
+//pointers
 
-  .no-pointer-events {
-    pointer-events: none;
-  }
+.no-pointer-events {
+  pointer-events: none;
+}
 
-  .cursor-pointer {
-    cursor: pointer;
-  }
-
+.cursor-pointer {
+  cursor: pointer;
+}
 </style>
