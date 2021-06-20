@@ -96,7 +96,7 @@ export default class Home extends Vue {
         senderOrganization: this.livewireForm[2].value, 
         subject: this.livewireForm[3].value,
         message: this.livewireForm[4].value,
-        image: result.data.url });
+        image: result.data.secure_url });
     });
     this.$forceUpdate();
   }
