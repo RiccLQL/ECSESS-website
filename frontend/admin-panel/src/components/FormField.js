@@ -12,7 +12,8 @@ const FormField = (props) => {
         const fetchEC = async () => {   
             if (props.type === "select") {
                 const EC = await axios.get("/api/admin/events/categories");
-                setEventCategories(EC.data.categories);
+                console.log(EC);
+                setEventCategories(EC.data.data);
             }
         };
 

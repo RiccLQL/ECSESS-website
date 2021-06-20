@@ -39,8 +39,8 @@ const NewsTab = () => {
     const [value, setValue] = useState(0); // integer state
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
-        data.image = data.image[0].name;
-        axios.post("/api/admin/home/news", data);
+        data.image = 'https://res.cloudinary.com/ecsess-website/image/upload/v1623603856/shutterstock_1104908693_recolored_resized_bnsjcb.jpg';
+        axios.post("/api/admin/news", data);
 
         setValue(value === 0 ? 1 : 0); // update the state to force render
     };
@@ -54,9 +54,9 @@ const NewsTab = () => {
             </div>
             <h3>Create News</h3>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <FormField message="Title" name="name" enter={register({ required: true })} type="text"/>
+                <FormField message="Title" name="title" enter={register({ required: true })} type="text"/>
                 <FormField message="Image" name="image" enter={register({ required: true })} type="file"/>
-                <FormField message="Blurb" name="blurb" enter={register({ required: true })} type="textarea"/>
+                <FormField message="Blurb" name="description" enter={register({ required: true })} type="textarea"/>
                 <FormField message="Link" name="link" enter={register({ required: true })} type="text"/>
 
                 <input className="submit-button" type="submit" />

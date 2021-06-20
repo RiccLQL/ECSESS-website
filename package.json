@@ -4,10 +4,10 @@
   "description": "Official ECSESS website",
   "main": "server.js",
   "scripts": {
-    "server": "cd backend && npm install && npm run testStart",
-    "client": "cd frontend/ecsess-website && npm install && npm run --silent serve",
+    "server": "cd api && npm install && npm run start",
+    "client": "cd frontend/client-ui && npm install && npm run serve",
     "admin": "cd frontend/admin-panel && npm install && npm run start",
-    "start": "concurrently \"npm run --silent server\" \"npm run --quiet --no-info client\" \"npm run --silent admin\" ",
+    "start": "concurrently \"npm run --silent server\" \"npm run --silent admin\" ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {

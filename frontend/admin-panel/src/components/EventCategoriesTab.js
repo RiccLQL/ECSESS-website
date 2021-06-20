@@ -8,7 +8,7 @@ const EventCategoriesTab = () => {
 
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
-            data.image = data.image[0].name;
+        console.log(data);
             axios.post("/api/admin/events/category", data);
     };
 
@@ -16,8 +16,7 @@ const EventCategoriesTab = () => {
         <div className="main-wrapper" >
             <h3>Create Event Category</h3>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <FormField message="Event Category Name" name="event_category_name" enter={register({ required: true })} type="text"/>
-                <FormField message="Image" name="image" enter={register({ required: true })} type="file"/>
+                <FormField message="Event Category Name" name="name" enter={register({ required: true })} type="text"/>
                 <input className="submit-button" type="submit" />
             </form>
         </div>

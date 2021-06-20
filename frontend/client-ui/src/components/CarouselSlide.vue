@@ -40,7 +40,7 @@ export default class CarouselSlide extends Vue {
     @Prop() description!: string;
     @Prop() title!: string;
     @Prop() image!: ImageObject;
-    @Prop() carouselRotation: number | undefined;
+    @Prop() carouselRotation?: number;
     @Prop() index!: number;
     @Prop() link!: string;
     private imgSize: ImageSize = ImageSize.medium;

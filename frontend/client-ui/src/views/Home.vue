@@ -6,7 +6,7 @@
     <Carousel :slides="featuredNews" :autoLoop="true"/>   
     <Divider />
     <Subtitle subtitle="Upcoming Events" />
-    <Calendar :calendar="upcomingThreeEvents" />
+    <Calendar :calendar="upcomingEvents" />
     <Divider />
     <Subtitle subtitle="Promote your event with ECSE students" />
     <TextArea text="Send a message to be featured on the ECSESS newsletter, to be shared with all ECSE students!"/>
@@ -30,6 +30,7 @@ import TextArea from "@/components/TextArea.vue";
 import axios from "axios";
 import FormData from 'form-data';
 import Calendar, { CalendarItem } from "@/components/Calendar.vue";
+import { NewsModel, EventModel } from "@/axios/modelInterfaces";
 
 @Component({
   components: {
@@ -46,16 +47,23 @@ export default class Home extends Vue {
   private homeCoverImgPath: string = "https://res.cloudinary.com/ecsess-website/image/upload/v1623367491/covers/peppa-blues_cqb58s.jpg";
   private homeCoverTitle: string = "Hello, world!";
   private homeCoverSubtitle: string = "Welcome to the new ECSESS website.";
-  private featuredNews: SlideObject[] = [
-    { title: "Software Engineering Co-op", description: "If you're an incoming student in the new Software Engineering Co-op program, there are many resources coming up to help you get prepared!", image: { path: "https://res.cloudinary.com/ecsess-website/image/upload/v1623603856/shutterstock_1104908693_recolored_resized_bnsjcb.jpg", alt: "coop" }, link: "https://www.mcgill.ca/ece/undergrad/information/software-engineering-co-op" },
-    { title: "ECSESS Summer Events", description: "Check out our upcoming summer events!", image: { path: "https://res.cloudinary.com/ecsess-website/image/upload/v1623604089/GettyImages-1224104180_tfrcmz.jpg", alt: "big money" } },
-  ];
+  private featuredNews: SlideObject[] = [];
+  private upcomingEvents: CalendarItem[] = [];
+  
+  private async created() {
+    this.featuredNews = await axios.get("/news/featured").then((result) => {
+      const newsRawData: NewsModel[] = result.data.data;
+      const newsProcessed: SlideObject[] = newsRawData ? newsRawData.map(news => ({ title: news.title, description: news.description, image: { alt: "news", path: news.image }, link: news.link })) : [];
+      return newsProcessed;
+    })
 
-  private upcomingThreeEvents: CalendarItem[] = [
-    { title: "Chucky cheez", description: "holy smokes", date: new Intl.DateTimeFormat('en-CA').format(new Date('December 3, 2021')), link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date", image: { alt: "cheeze", path: "https://res.cloudinary.com/ecsess-website/image/upload/v1623389517/council-members_xkjqpv.jpg" } },
-    { title: "Chucky cheez", description: "holy smokes", date: new Intl.DateTimeFormat('en-CA').format(new Date('December 3, 2021')), link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date", image: { alt: "cheeze", path: "https://res.cloudinary.com/ecsess-website/image/upload/v1623389517/council-members_xkjqpv.jpg" } },
-    { title: "Chucky cheez", description: "holy smokes", date: new Intl.DateTimeFormat('en-CA').format(new Date('December 3, 2021')), link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date", image: { alt: "cheeze", path: "https://res.cloudinary.com/ecsess-website/image/upload/v1623389517/council-members_xkjqpv.jpg" } },
-  ]
+    this.upcomingEvents = await axios.get("/events/date").then((result) => {
+      const upcomingEventsRawData: EventModel[] = result.data.data;
+      console.log(upcomingEventsRawData[0].date);
+      const upcomingEventsProcessed: CalendarItem[] = upcomingEventsRawData ?  upcomingEventsRawData.map(events => ({ title: events.title, description: events.description, image: { alt: "upcoming event", path: events.image }, link: events.link, date: new Intl.DateTimeFormat('en-CA').format(new Date(events.date))})) : [];
+      return upcomingEventsProcessed;
+    })
+  }
 
   private livewireEmail: string = "";
   private livewireName: string = "";

@@ -44,8 +44,7 @@ const postLivewireEmail = async (req, res, next) => {
             text: formData.message,
             attachments: [
                 {
-                    filename: req.file.originalname,
-                    path: req.file.path
+                    path: formData.image,
                 },
             ]
         };
