@@ -17,6 +17,7 @@
         :dropdown="dropdown"
       />
     </div>
+    <button @click="toggleDisplayMode()">We need an image over here</button>
   </div>
 </template>
 
@@ -28,6 +29,7 @@ import NavBarDropdown, {
 } from "@/components/NavBarDropdown.vue";
 import pathNames from "@/router/pathNames";
 import _colors from "@/styles/_colors.scss";
+import colors from "@/styles/colors";
 
 interface NavBarRouteObject {
   name: string;
@@ -43,13 +45,31 @@ interface NavBarRouteObject {
   },
 })
 export default class Home extends Vue {
-  private colorToggle: string = _colors.darkbackground;
+  private toggleDisplayMode(): void {
+    const el = document.documentElement;
+    switch (document.documentElement.getAttribute("data-theme")) {
+      //using a switch here in case we ever for some reason (yes I will judge you) want to add more themes
+      case "dark":
+        colors.setTheme("light", el);
+        break;
+      case "light":
+        colors.setTheme("dark", el);
+        break;
+      default:
+        colors.setTheme("dark", el);
+        break;
+    }
+    //TODO ricc pls updated the thing here. It needs to re-render the navbar :(
+  }
+
+  private colorToggle: string = colors.get().background;
 
   private scrollListener(event: Event): void {
     if (window.scrollY > 0) {
-      this.colorToggle = _colors.darkmain;
+      this.colorToggle = colors.get().main;
+      console.log(colors.get().main);
     } else {
-      this.colorToggle = _colors.darkbackground;
+      this.colorToggle = colors.get().background;
     }
   }
 
@@ -171,13 +191,13 @@ export default class Home extends Vue {
 }
 
 .navbar-item:hover {
-  background-color: $darkinput;
+  background-color: var(--inputColor);
 }
 
 .navbar-dropdown {
   position: absolute;
   top: 4rem;
-  background-color: $darkmain;
+  background-color: var(--mainColor);
   padding: 1rem;
   border-radius: 0.2rem;
   z-index: 1000;
