@@ -1,13 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import { App } from './App';
 import reportWebVitals from './reportWebVitals';
 import axios from 'axios';
 
-axios.defaults.baseURL = process.env.REACT_APP_AXIOS_URL;
-
-require("dotenv").config();
+axios.defaults.baseURL = process.env.REACT_APP_AXIOS_URL + "/api/admin";;
 
 ReactDOM.render(
   <React.StrictMode>

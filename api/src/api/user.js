@@ -25,16 +25,17 @@ const newsBase = "/news";
 const livewireBase = "/livewire";
 const photosBase = "/photos";
 const jobsBase = "/jobs";
+const councilBase = "/council";
 
 //events
 /** GET 5 upcoming events by date */
-api.get(`${eventsBase}/date`, (req, res, next) => {handler(req, res, next, models.Events, "GETORDERBY", "Could not fetch upcoming events", "Fetched upcoming events successfully", undefined, undefined, undefined, { 'date': -1 })});
+api.get(`${eventsBase}/date`, async (req, res, next) => {await handler(req, res, next, models.Events, "GETORDERBY", "Could not fetch upcoming events", "Fetched upcoming events successfully", undefined, undefined, undefined, { 'date': -1 })});
 
 //resources
 
 //news
 /** GET featured news */
-api.get(`${newsBase}/featured`, (req, res, next) => {handler(req, res, next, models.News, "GET", "Could not fetch news", "Fetched news successfully")});
+api.get(`${newsBase}/featured`, async (req, res, next) => {await handler(req, res, next, models.News, "GET", "Could not fetch news", "Fetched news successfully")});
 
 //livewire
 
@@ -43,5 +44,13 @@ api.get(`${newsBase}/featured`, (req, res, next) => {handler(req, res, next, mod
 
 
 //jobs
+
+
+// council
+/** GET executive members */
+api.get(`${councilBase}/members/execs`, async (req, res, next) => {await handler(req, res, next, models.Execs, "GET", "Could not fetch execs", "Fetched execs successfully")});
+
+/** GET representatives */
+api.get(`${councilBase}/members/reps`, async (req, res, next) => {await handler(req, res, next, models.Reps, "GET", "Could not fetch reps", "Fetched reps successfully")});
 
 module.exports = api;

@@ -2,6 +2,7 @@ const { createConnection } = require("mongoose");
 const config = require("./config/config");
 const { eventsSchema, eventCategoriesSchema } = require ("./model/events");
 const { newsSchema } = require("./model/news");
+const { execsSchema, repsSchema } = require("./model/council");
 
 const createConnections = async function() {
     const eventsDB = await createConnection(config.database.MONGODB_EVENTS, {
@@ -20,6 +21,15 @@ const createConnections = async function() {
         useCreateIndex: true,
     });
     const News = await newsDB.model("news", newsSchema);
+
+    const councilDB = await createConnection(config.database.MONGODB_COUNCIL, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useFindAndModify: false,
+        useCreateIndex: true,
+    })
+    const Execs = await councilDB.model("execs", execsSchema);
+    const Reps = await councilDB.model("reps", repsSchema);
 
     const resourcesDB = await createConnection(config.database.MONGODB_RESOURCES, {
         useNewUrlParser: true,
@@ -40,7 +50,7 @@ const createConnections = async function() {
         useCreateIndex: true,
     });
 
-    return { Events, EventCategories, News };
+    return { Events, EventCategories, News, Execs, Reps };
 }
 
 module.exports = { createConnections };

@@ -1,0 +1,241 @@
+@import './variables.css';
+
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+  color: var(--textColor);
+  user-select: none;
+}
+
+body {
+  margin: 0;
+  background-color: var(--backgroundColor);
+}
+
+button {
+    all: unset;
+    color: var(--textColor);
+    font-size: var(--mediumFontSize);
+    font-weight: var(--boldFont);
+    background-color: var(--inputColor);
+    border-radius: 0.2rem;
+    padding: 0.6rem 0.8rem;
+    transition: all 0.3s ease;
+    user-select: none;
+    cursor: pointer;
+    margin: 0.5rem 0.25rem;
+    text-align: center;
+}
+
+button:hover {
+    background-color: var(--accentColor);
+}
+
+input {
+    all: unset;
+    background-color: var(--inputColor);
+    border-radius: 0.2rem;
+    padding: 0.6rem 0.8rem;
+    margin: 0.25rem 0.25rem;
+    text-align: left;
+    color: var(--textColor);
+}
+
+select {
+    background-color: var(--inputColor);
+    border-radius: 0.2rem;
+    border: none;
+    padding: 0.6rem 0.8rem;
+    margin: 0.25rem 0.25rem;
+    text-align: left;
+    color: var(--textColor);
+}
+
+textarea {
+  background-color: var(--inputColor);
+  border-radius: 0.2rem;
+  border: none;
+  padding: 0.6rem 0.8rem;
+  margin: 0.25rem 0.25rem;
+  text-align: left;
+  color: var(--textColor);
+}
+
+::-webkit-input-placeholder { /* Edge */
+    color: var(--textColor);
+  }
+  
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+color: var(--textColor);
+}
+
+::placeholder {
+color: var(--textColor);
+}
+
+h1 {
+  color: var(--textColor);
+  font-size: var(--titleFontSize);
+  font-weight: var(--lightFont);
+  margin: 0;
+}
+
+h2 {
+  color: var(--textColor);
+  font-size: var(--largeFontSize);
+  font-weight: var(--mediumFont);
+}
+
+h3 {
+  color: var(--textColor);
+  font-size: var(--mediumFontSize);
+  font-weight: var(--boldFont);
+  margin: 0;
+}
+h4 {
+  color: var(--textColor);
+  font-size: var(--mediumFontSize);
+  font-weight: var(--mediumFont);
+}
+
+p {
+  color: var(--textColor);
+  font-size: var(--smallFontSize);
+  font-weight: var(--mediumFont);
+}
+
+.centered {
+  text-align: center;
+}
+
+.left {
+  text-align: left;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
+.flex-vertical {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.flex-horizontal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.space-between {
+  justify-content: space-between;
+  align-items: space-between;
+}
+
+.sixty {
+  width: 60%;
+}
+
+.fourty {
+  width: 40%;
+}
+
+.fifty {
+  width: 50%;
+}
+
+.twenty {
+  width: 20%;
+}
+
+.top-layer {
+  z-index: 100;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  margin-bottom: 1rem;
+}
+
+.behind {
+  z-index: -1;
+}
+
+.margin-bottom {
+  margin-bottom: 2rem;
+}
+
+.fade-enter-active {
+  transition: all 0.15s ease;
+}
+
+.fade-leave-active {
+    transition: all 0.15s ease;
+}
+
+.fade-enter {
+  opacity: 0;
+} 
+
+.fade-leave-to {
+  opacity: 0;
+}
+
+.smooth-transition {
+  transition: all 0.3s ease;
+}
+
+.black-and-white {
+  filter: grayscale(1);
+}
+
+.color-on-hover:hover {
+  filter: unset;
+}
+
+.no-pointer-events {
+  pointer-events: none;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.text-color {
+    background-color: var(--textColor);
+}
+
+.input-color {
+    background-color: var(--inputColor);
+}
+
+.background-color {
+    background-color: var(--backgroundColor);
+}
+
+.main-color {
+    background-color: var(--mainColor);
+}
+
+.accent-color {
+    background-color: var(--accentColor);
+}

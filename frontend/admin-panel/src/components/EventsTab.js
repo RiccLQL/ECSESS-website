@@ -21,7 +21,7 @@ const EventsTab = () => {
           headers: { "X-Requested-With": "XMLHttpRequest" },
         };
         axios.post(url, formdata, config).then((result) => {
-            data.image = result.data.url;
+            data.image = result.data.secure_url;
             axios.post("/api/admin/events", data);
         });
         setValue(value === 0 ? 1 : 0);

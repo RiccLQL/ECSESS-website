@@ -24,6 +24,7 @@ const newsBase = "/news";
 const livewireBase = "/livewire";
 const photosBase = "/photos";
 const jobsBase = "/jobs";
+const councilBase = "/council";
 
 //events
 /** POST event */
@@ -50,5 +51,13 @@ api.post(`${newsBase}`, async (req, res, next) => {await handler(req, res, next,
 
 
 //jobs
+
+
+//council
+/** POST exec */
+api.post(`${councilBase}/exec`, async (req, res, next) => {await handler(req, res, next, models.Execs, "POST", "Could not post exec", "Posed exec successfully")});
+
+/** POST rep */
+api.post(`${councilBase}/rep`, async (req, res, next) => {await handler(req, res, next, models.Reps, "POST", "Could not post rep", "Posted rep successfully")});
 
 module.exports = api;

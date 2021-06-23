@@ -1,8 +1,6 @@
 const handler = async (req, res, next, model, method, error, success, getWhere = undefined, putId = undefined, deleteId = undefined, getOrderBy = undefined, getLimit = undefined) => {
     try {
-        console.log(model);
         let data = await methodSwitch(method, req, model, putId, deleteId, getWhere, getOrderBy);
-        console.log(data)
         if (data) {
             return res.status(200).json({
                 success: true,
@@ -25,9 +23,7 @@ const handler = async (req, res, next, model, method, error, success, getWhere =
 
 async function methodSwitch(method, req, model, putId, deleteId, getWhere, getOrderBy) {
     let data = "";
-    console.log(model)
     let m = model;
-    console.log(m);
     switch (method) {
         case "GET":
             data = m.find({});
