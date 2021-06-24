@@ -17,7 +17,13 @@
         :dropdown="dropdown"
       />
     </div>
-    <button @click="toggleDisplayMode()">We need an image over here</button>
+    <button
+      @click="toggleDisplayMode()"
+      class="display-mode-toggle flex-horizontal"
+    >
+      <img src="@/assets/sun.svg" v-if="isDarkMode()" class="sun-svg" />
+      <img src="@/assets/moon.svg" v-else class="moon-svg" />
+    </button>
   </div>
 </template>
 
@@ -58,7 +64,11 @@ export default class Home extends Vue {
         colors.setTheme("dark", el);
         break;
     }
-    //TODO ricc pls updated the thing here. It needs to re-render the navbar :(
+    window.location.reload();
+  }
+
+  private isDarkMode(): boolean {
+    return localStorage.getItem("theme") == "dark";
   }
 
   private colorToggle: string = colors.get().background;
@@ -170,6 +180,7 @@ export default class Home extends Vue {
   display: flex;
   justify-content: center;
   align-content: center;
+  align-items: center;
   flex-direction: row;
   transition: all 0.3s ease;
   width: 100%;
@@ -190,7 +201,7 @@ export default class Home extends Vue {
 }
 
 .navbar-item:hover {
-  background-color: var(--inputColor);
+  background-color: var(--accentColor);
 }
 
 .navbar-dropdown {
@@ -205,6 +216,29 @@ export default class Home extends Vue {
 .navbar-subitem {
   font-weight: $bold;
   font-size: $small-size;
-  margin: 0.25rem 0 0.25rem 0;
+  margin: 0.25rem 0;
+}
+
+.display-mode-toggle {
+  all: unset;
+  padding: 0.3rem;
+  margin: 0.25rem 0;
+  border-radius: 0.2rem;
+  transition: 0.3s all ease;
+}
+
+.display-mode-toggle:hover {
+  background-color: var(--accentColor);
+}
+
+.sun-svg {
+  filter: invert(100%);
+  width: 1.85rem;
+  height: 1.85rem;
+}
+
+.moon-svg {
+  width: 1.85rem;
+  height: 1.85rem;
 }
 </style>

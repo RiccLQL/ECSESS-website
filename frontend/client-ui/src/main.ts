@@ -16,7 +16,7 @@ Vue.use(Cloudinary, {
     apiKey: process.env.VUE_APP_CLOUDINARY_API_KEY,
     apiSecret: process.env.VUE_APP_CLOUDINARY_API_SECRET,
   }
-})
+});
 
 Vue.config.productionTip = false;
 

@@ -21,7 +21,9 @@ import colors from "@/styles/colors";
 })
 export default class App extends Vue {
   created() {
-    colors.setTheme("dark", document.documentElement);
+    let storedTheme = localStorage.getItem("theme");
+    if (storedTheme) colors.setTheme(storedTheme, document.documentElement);
+    else colors.setTheme("dark", document.documentElement);
   }
 }
 </script>
@@ -40,10 +42,10 @@ export default class App extends Vue {
 
 html[data-theme="light"] {
   --backgroundColor: #ffffff;
-  --mainColor: #e5f4eb;
+  --mainColor: #1fb16b;
   --textColor: #272727;
-  --inputColor: #ffffff;
-  --accentColor: #41ba80;
+  --inputColor: #cfcfcf;
+  --accentColor: #63ca98;
 }
 
 html {
@@ -59,6 +61,7 @@ a {
 body {
   margin: 0;
   background-color: var(--backgroundColor);
+  transition: 0.3s all ease;
 }
 
 //text stuff

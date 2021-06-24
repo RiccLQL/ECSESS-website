@@ -16,6 +16,7 @@ function updateColors(el: HTMLElement): void {
 function setTheme(theme: string, el: HTMLElement) {
     el.setAttribute("data-theme", theme);
     updateColors(el);
+    localStorage.setItem('theme', theme);
 }
 
 function get() {
