@@ -1,9 +1,9 @@
 <template>
-    <div>
-        <PageCover title="ECSESS Council Documents"/>
-        <Divider />
-        <Subtitle subtitle="Financial Reports" />
-    </div>
+  <div>
+    <PageCover title="ECSESS Council Documents" />
+    <Divider />
+    <Subtitle subtitle="Financial Reports" />
+  </div>
 </template>
 
 <script lang="ts">
@@ -13,13 +13,12 @@ import Subtitle from "@/components/Subtitle.vue";
 import Divider from "@/components/Divider.vue";
 
 @Component({
-    name: "CouncilDocuments",
-    components: {
-        Divider,
-        PageCover,
-        Subtitle,
-    }
+  name: "CouncilDocuments",
+  components: {
+    Divider,
+    PageCover,
+    Subtitle,
+  },
 })
-export default class CouncilDocuments extends Vue {
-}
+export default class CouncilDocuments extends Vue {}
 </script>

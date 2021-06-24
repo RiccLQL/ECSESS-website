@@ -52,7 +52,7 @@ html {
 
 a {
   text-decoration: none;
-  color: $darktext;
+  color: var(--textColor);
   user-select: none;
 }
 

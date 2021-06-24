@@ -28,7 +28,6 @@ import NavBarDropdown, {
   NavBarDropdownObject,
 } from "@/components/NavBarDropdown.vue";
 import pathNames from "@/router/pathNames";
-import _colors from "@/styles/_colors.scss";
 import colors from "@/styles/colors";
 
 interface NavBarRouteObject {
