@@ -15,6 +15,7 @@ const { handler } = require("../controller/template");
 let models = null;
 async function syncModels() {
     models = await createConnections();
+    console.log("Done setting up connections");
 }
 syncModels();
 
@@ -25,16 +26,25 @@ const newsBase = "/news";
 const livewireBase = "/livewire";
 const photosBase = "/photos";
 const jobsBase = "/jobs";
+const councilBase = "/council";
 
 //events
-/** GET 5 upcoming events by date */
-api.get(`${eventsBase}/date`, (req, res, next) => {handler(req, res, next, models.Events, "GETORDERBY", "Could not fetch upcoming events", "Fetched upcoming events successfully", undefined, undefined, undefined, { 'date': -1 })});
+/** GET upcoming events, paginated */
+api.get(`${eventsBase}`, async (req, res, next) => {await handler(req, res, next, models.Events, "GETPAGINATED", "Could not fetch paginated response of upcoming events", "Fetched paginated response of upcoming events successfully", { 'date': 1 }, req.query.paginationIndex)});
 
+/** GET events collection size */
+api.get(`${eventsBase}/size`, async (req, res, next) => {await handler(req, res, next, models.Events, "GETSIZE", "Could not get events collection size", "Fetched events collection size successfully")});
+
+/** GET upcoming events of a specific category within a time frame */
+api.get(`${eventsBase}/byCategory/month`, async (req, res, next) => {await handler(req, res, next, models.Events, "GETWITHINTIME", "Could not fetch response of upcoming events within a timeframe", "Fetched response of upcoming events within a timeframe successfully", { category: req.query.category, date: { $lte: req.query.date } }, { 'date': 1 })});
+
+/** GET all events of a specific category */
+api.get(`${eventsBase}/byCategory`, async (req, res, next) => {await handler(req, res, next, models.Events, "GETBY", "Could not fetch response of upcoming events", "Fetched response of upcoming events successfully", { category: req.query.category })});
 //resources
 
 //news
 /** GET featured news */
-api.get(`${newsBase}/featured`, (req, res, next) => {handler(req, res, next, models.News, "GET", "Could not fetch news", "Fetched news successfully")});
+api.get(`${newsBase}/featured`, async (req, res, next) => {await handler(req, res, next, models.News, "GET", "Could not fetch news", "Fetched news successfully")});
 
 //livewire
 
@@ -43,5 +53,13 @@ api.get(`${newsBase}/featured`, (req, res, next) => {handler(req, res, next, mod
 
 
 //jobs
+
+
+// council
+/** GET executive members */
+api.get(`${councilBase}/members/execs`, async (req, res, next) => {await handler(req, res, next, models.Members, "GETBY", "Could not fetch execs", "Fetched execs successfully", { category: "Executive" })});
+
+/** GET representatives */
+api.get(`${councilBase}/members/reps`, async (req, res, next) => {await handler(req, res, next, models.Members, "GETBY", "Could not fetch reps", "Fetched reps successfully", { category: "Representative" })});
 
 module.exports = api;

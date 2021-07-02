@@ -1,4 +1,5 @@
 {
-    "name": "ecsess-web-api",
-    "version": 2
-  }
+    "name": "ecsess-website",
+    "version": 2,
+    "rewrites": [{ "source": "/api/(.*)", "destination": "/api" }]
+}

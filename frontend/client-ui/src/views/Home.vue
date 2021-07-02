@@ -10,7 +10,7 @@
     <Carousel :slides="featuredNews" :autoLoop="true" />
     <Divider />
     <Subtitle subtitle="Upcoming Events" />
-    <Calendar :calendar="upcomingEvents" />
+    <Calendar :calendar="upcomingEvents" @showMore="showMoreUpcomingEvents" :totalCount="upcomingEventsSize" @collapseResults="collapseUpcomingEvents"/>
     <Divider />
     <Subtitle subtitle="Promote your event with ECSE students" />
     <TextArea
@@ -56,7 +56,8 @@ export default class Home extends Vue {
   private homeCoverSubtitle: string = "Welcome to the new ECSESS website.";
   private featuredNews: SlideObject[] = [];
   private upcomingEvents: CalendarItem[] = [];
-
+  private upcomingEventsSize: number = 0;
+  
   private async created() {
     this.featuredNews = await axios.get("/news/featured").then((result) => {
       const newsRawData: NewsModel[] = result.data.data;
@@ -71,20 +72,13 @@ export default class Home extends Vue {
       return newsProcessed;
     });
 
-    this.upcomingEvents = await axios.get("/events/date").then((result) => {
+    this.upcomingEventsSize = await axios.get("/events/size").then((result) => {
+      return result.data.data;
+    })
+
+    this.upcomingEvents = await axios.get(`/events`, {params: {paginationIndex: 0}}).then((result) => {
       const upcomingEventsRawData: EventModel[] = result.data.data;
-      console.log(upcomingEventsRawData[0].date);
-      const upcomingEventsProcessed: CalendarItem[] = upcomingEventsRawData
-        ? upcomingEventsRawData.map((events) => ({
-            title: events.title,
-            description: events.description,
-            image: { alt: "upcoming event", path: events.image },
-            link: events.link,
-            date: new Intl.DateTimeFormat("en-CA").format(
-              new Date(events.date)
-            ),
-          }))
-        : [];
+      const upcomingEventsProcessed: CalendarItem[] = upcomingEventsRawData ?  upcomingEventsRawData.map(events => ({ title: events.title, description: events.description, image: { alt: "upcoming event", path: events.image }, link: events.link, date: new Intl.DateTimeFormat('en-CA').format(new Date(events.date))})) : [];
       return upcomingEventsProcessed;
     });
   }
@@ -154,6 +148,19 @@ export default class Home extends Vue {
       });
     });
     this.$forceUpdate();
+  }
+
+  private async showMoreUpcomingEvents(paginationIndex: number) {
+      const moreEvents = await axios.get(`/events`, {params: {paginationIndex: paginationIndex}}).then((result) => {
+        const upcomingEventsRawData: EventModel[] = result.data.data;
+        const upcomingEventsProcessed: CalendarItem[] = upcomingEventsRawData ?  upcomingEventsRawData.map(events => ({ title: events.title, description: events.description, image: { alt: "upcoming event", path: events.image }, link: events.link, date: new Intl.DateTimeFormat('en-CA').format(new Date(events.date))})) : [];
+        return upcomingEventsProcessed;
+      })
+      this.upcomingEvents = this.upcomingEvents.concat(moreEvents);
+  }
+
+  private async collapseUpcomingEvents() {
+    this.upcomingEvents = this.upcomingEvents.slice(0, 5);
   }
 }
 </script>

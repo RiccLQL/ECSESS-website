@@ -23,6 +23,7 @@ const {
     MONGODB_EVENTS,
     MONGODB_RESOURCES,
     MONGODB_JOBS,
+    MONGODB_COUNCIL,
 } = process.env;
 
 const config = {
@@ -38,6 +39,7 @@ const config = {
         MONGODB_EVENTS,
         MONGODB_RESOURCES,
         MONGODB_JOBS,
+        MONGODB_COUNCIL,
     },
     email: {
         EMAILHOST,

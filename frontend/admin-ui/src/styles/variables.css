@@ -1,0 +1,14 @@
+:root {
+    --backgroundColor: #26292f;
+    --mainColor: #363a41;
+    --textColor: #ffffff;
+    --inputColor: #4f5662;
+    --accentColor: #00904b;
+    --lightFont: 200;
+    --mediumFont: 400;
+    --boldFont: 600;
+    --smallFontSize: 0.8rem;
+    --mediumFontSize: 0.9rem;
+    --largeFontSize: 1.2rem;
+    --titleFontSize: 1.5rem;
+  }

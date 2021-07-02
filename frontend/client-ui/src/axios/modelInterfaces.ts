@@ -14,7 +14,16 @@ interface EventModel {
     category: string,
 }
 
+interface MemberModel {
+    name: string,
+    position: string,
+    description: string,
+    image: string,
+    email: string,
+}
+
 export {
     NewsModel,
     EventModel,
+    MemberModel,
 }

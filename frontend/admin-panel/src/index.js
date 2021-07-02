@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:8081';
+axios.defaults.baseURL = process.env.REACT_APP_AXIOS_URL;
 
 require("dotenv").config();
 

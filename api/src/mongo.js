@@ -2,6 +2,8 @@ const { createConnection } = require("mongoose");
 const config = require("./config/config");
 const { eventsSchema, eventCategoriesSchema } = require ("./model/events");
 const { newsSchema } = require("./model/news");
+const { membersSchema } = require("./model/council");
+const { resourcesSchema, resourceCategoriesSchema } = require("./model/resources");
 
 const createConnections = async function() {
     const eventsDB = await createConnection(config.database.MONGODB_EVENTS, {
@@ -21,12 +23,23 @@ const createConnections = async function() {
     });
     const News = await newsDB.model("news", newsSchema);
 
+    const councilDB = await createConnection(config.database.MONGODB_COUNCIL, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useFindAndModify: false,
+        useCreateIndex: true,
+    })
+    const Members = await councilDB.model("members", membersSchema);
+
     const resourcesDB = await createConnection(config.database.MONGODB_RESOURCES, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useFindAndModify: false,
         useCreateIndex: true,
     });
+    const Resources = await resourcesDB.model("resources", resourcesSchema);
+    const ResourceCategories = await resourcesDB.model("resourceCategories", resourceCategoriesSchema);
+
     const jobsDB = await createConnection(config.database.MONGODB_JOBS, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -40,7 +53,7 @@ const createConnections = async function() {
         useCreateIndex: true,
     });
 
-    return { Events, EventCategories, News };
+    return { Events, EventCategories, News, Members, Resources, ResourceCategories };
 }
 
 module.exports = { createConnections };
