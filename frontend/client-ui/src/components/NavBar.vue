@@ -1,5 +1,8 @@
 <template>
   <div class="navbar" :style="{ backgroundColor: colorToggle }">
+    <div class="logo">
+      <router-link to="/home"><Picture alt="ECSESS Logo" :path="require('@/assets/ecsess-white.png')" :size="logoSize" /></router-link>
+    </div>
     <div v-for="(route, key) in navBarRoutes" :key="key">
       <NavBarSingleOption
         v-if="route.path"
@@ -35,6 +38,7 @@ import NavBarDropdown, {
 } from "@/components/NavBarDropdown.vue";
 import pathNames from "@/router/pathNames";
 import colors from "@/styles/colors";
+import Picture, { ImageSize } from "@/components/Picture.vue";
 
 interface NavBarRouteObject {
   name: string;
@@ -47,9 +51,12 @@ interface NavBarRouteObject {
   components: {
     NavBarSingleOption,
     NavBarDropdown,
+    Picture,
   },
 })
 export default class Home extends Vue {
+  private logoSize: ImageSize = ImageSize.logo;
+
   private toggleDisplayMode(): void {
     const el = document.documentElement;
     switch (document.documentElement.getAttribute("data-theme")) {
@@ -189,6 +196,12 @@ export default class Home extends Vue {
   top: 0;
 }
 
+.logo {
+  position: absolute;
+  left: 2rem;
+  margin-top: 0.25rem;
+}
+
 .navbar-item {
   font-family: $defaultfont;
   font-size: $medium-size;
@@ -225,6 +238,8 @@ export default class Home extends Vue {
   margin: 0.25rem 0;
   border-radius: 0.2rem;
   transition: 0.3s all ease;
+  position: absolute;
+  right: 2rem;
 }
 
 .display-mode-toggle:hover {

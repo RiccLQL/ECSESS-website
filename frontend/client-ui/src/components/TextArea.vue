@@ -22,6 +22,6 @@ p {
 }
 
 .text-area {
-  line-height: 1.2rem;
+  line-height: 1.5rem;
 }
 </style>

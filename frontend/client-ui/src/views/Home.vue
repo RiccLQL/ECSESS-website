@@ -1,10 +1,31 @@
 <template>
   <div class="home">
     <PageCover
-      :path="homeCoverImgPath"
       :title="homeCoverTitle"
-      :subtitle="homeCoverSubtitle"
     />
+    <Divider />
+    <Subtitle subtitle="A hub for McGill ECSE students" />
+    <div class="flex-horizontal">
+      <div class="sixty flex-horizontal">
+        <div class="flex-vertical sixty side-margins">
+          <TextArea
+            text="ECSESS (Electrical, Computer & Software Engineering Students' Society at McGill) is a student association which helps McGill ECSE students in their academic, technical, social and professional progression."
+            class="flex-vertical centered"
+          />
+          <TextArea
+            text="This website was created to bring resources and information closer to students. All relevant academic resources, career resources and information about ECSESS events can be found here!"
+            class="flex-vertical centered"
+          />
+        </div>
+        <div class="fourty">
+          <Picture
+            alt="ECSESS Council"
+            path="https://res.cloudinary.com/ecsess-website/image/upload/v1623389518/council2019-2020_ba2neu.jpg"
+            :size="councilImageSize"
+          />
+        </div>
+      </div>
+    </div>
     <Divider />
     <Subtitle subtitle="Featured News" />
     <Carousel :slides="featuredNews" :autoLoop="true" />
@@ -17,9 +38,6 @@
       text="Send a message to be featured on the ECSESS newsletter, to be shared with all ECSE students!"
     />
     <Form v-model="livewireForm" @handleFormSubmit="submitLivewire" />
-    <Divider />
-    <Subtitle subtitle="Follow us on social media!" />
-    <Divider />
   </div>
 </template>
 
@@ -37,6 +55,8 @@ import axios from "axios";
 import FormData from "form-data";
 import Calendar, { CalendarItem } from "@/components/Calendar.vue";
 import { NewsModel, EventModel } from "@/axios/modelInterfaces";
+import { ImageSize } from "@/components/Picture.vue";
+import Picture from "@/components/Picture.vue";
 
 @Component({
   components: {
@@ -47,16 +67,16 @@ import { NewsModel, EventModel } from "@/axios/modelInterfaces";
     Form,
     TextArea,
     Calendar,
+    Picture,
   },
 })
 export default class Home extends Vue {
-  private homeCoverImgPath: string =
-    "https://res.cloudinary.com/ecsess-website/image/upload/v1623367491/covers/peppa-blues_cqb58s.jpg";
   private homeCoverTitle: string = "Hello, world!";
-  private homeCoverSubtitle: string = "Welcome to the new ECSESS website.";
   private featuredNews: SlideObject[] = [];
   private upcomingEvents: CalendarItem[] = [];
   private upcomingEventsSize: number = 0;
+
+  private councilImageSize: ImageSize = ImageSize.auto;
   
   private async created() {
     this.featuredNews = await axios.get("/news/featured").then((result) => {

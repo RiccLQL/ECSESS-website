@@ -2,7 +2,7 @@
   <div>
     <PageCover title="ECSESS Council Documents" />
     <Divider />
-    <Subtitle subtitle="Financial Reports" />
+    <Subtitle subtitle="Coming Soon" />
   </div>
 </template>
 

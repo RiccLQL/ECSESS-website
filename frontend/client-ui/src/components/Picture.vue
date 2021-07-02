@@ -1,6 +1,6 @@
 <template>
   <div class="overflow-hidden">
-    <img :src="path" :alt="alt" :style="style" />
+    <img class="picture" :src="path" :alt="alt" :style="style" />
   </div>
 </template>
 
@@ -18,6 +18,7 @@ enum ImageSize {
   large = "large",
   fullscreen = "fullscreen",
   auto = "auto",
+  logo = "logo",
 }
 
 export interface ImageObject {
@@ -48,7 +49,15 @@ export default class NavBarSingleOption extends Vue {
         return { "max-width": "100vw", "max-height": "100vh" };
       case ImageSize.auto:
         return { "max-width": "100%", "max-height": "100%" };
+      case ImageSize.logo:
+        return { "max-width": "auto", "max-height": "2.5rem"};
     }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  .picture {
+    border-radius: 0.5rem;
+  }
+</style>

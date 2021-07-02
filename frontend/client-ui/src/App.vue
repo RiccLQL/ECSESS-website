@@ -21,6 +21,7 @@ import colors from "@/styles/colors";
 })
 export default class App extends Vue {
   created() {
+    document.title = "ECSE McGill";
     let storedTheme = localStorage.getItem("theme");
     if (storedTheme) colors.setTheme(storedTheme, document.documentElement);
     else colors.setTheme("dark", document.documentElement);
@@ -139,6 +140,10 @@ p {
   align-items: space-between;
 }
 
+.align-left {
+  justify-content: left;
+}
+
 .sixty {
   width: 60%;
 }
@@ -179,6 +184,10 @@ p {
 
 .margin-bottom {
   margin-bottom: 2rem;
+}
+
+.side-margins {
+  margin: 0 2rem;
 }
 
 //transitions
