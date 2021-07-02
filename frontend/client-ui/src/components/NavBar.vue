@@ -19,7 +19,7 @@
     </div>
     <button
       @click="toggleDisplayMode()"
-      class="display-mode-toggle flex-horizontal"
+      class="display-mode-toggle flex-horizontal cursor-pointer"
     >
       <img src="@/assets/sun.svg" v-if="isDarkMode()" class="sun-svg" />
       <img src="@/assets/moon.svg" v-else class="moon-svg" />
