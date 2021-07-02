@@ -1,12 +1,12 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { FieldValues, UseFormRegister } from 'react-hook-form';
+import { FieldValues, UseFormRegister, UseFormSetValue } from 'react-hook-form';
 
 export interface FormInputData {
     type: "button" | "checkbox" | "color" | "date" | "datetime-local" | "email" | "file" | "hidden" | "image" | "month" | "number" | "password" | "radio" | "range" | "reset" | "search" | "select" | "submit" | "tel" | "text" | "textarea" | "time" | "url" | "week",
     placeholder: string,
-    value: string | File | null,
+    value: string | Date | null,
     name: string,
     selects?: string[],
 }
@@ -16,8 +16,10 @@ interface Props {
     placeholder: string,
     name: string,
     index: number,
+    value: string | Date | null,
     selects?: string[],
     register: UseFormRegister<FieldValues>,
+    setValue: UseFormSetValue<FieldValues>,
 }
 
 export const FormInput = (props: Props): JSX.Element => {
@@ -26,7 +28,8 @@ export const FormInput = (props: Props): JSX.Element => {
 
     useEffect(() => {
         setType(props.type);
-    }, [props.type])
+        props.setValue(props.name, props.value);
+    }, [props])
 
     return (
         <div className="form-input">

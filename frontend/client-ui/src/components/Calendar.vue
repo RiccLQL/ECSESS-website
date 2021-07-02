@@ -39,6 +39,12 @@
         </div>
       </div>
     </div>
+    <div class="margin-bottom">
+        <Button v-if="totalCount > 5 && calendar.length < totalCount" :clickParams="null" :color="buttonColor" :size="buttonSize" text="More Results" @handleClick="showMoreResults"/>
+    </div>
+    <div class="margin-bottom">
+        <Button v-if="calendar.length > 5" :clickParams="null" :color="collapseButtonColor" :size="buttonSize" text="Collapse Results" @handleClick="collapseResults"/>
+    </div>
   </div>
 </template>
 
@@ -66,15 +72,29 @@ export interface CalendarItem {
   },
 })
 export default class Calendar extends Vue {
-  @Prop() calendar!: CalendarItem[];
+    @Prop() calendar!: CalendarItem[];
+    @Prop() totalCount!: number;
 
-  private buttonSize: ButtonSizes = ButtonSizes.medium;
-  private buttonColor: string = colors.get().accent;
-  private calendarImageSize: ImageSize = ImageSize.auto;
+    private buttonSize: ButtonSizes = ButtonSizes.medium;
+    private buttonColor: string = colors.get().accent;
+    private collapseButtonColor: string = "#FA8072";
+    private calendarImageSize: ImageSize = ImageSize.auto;
 
-  private goToLink(value: string) {
-    window.open(value);
-  }
+    private paginationIndex: number = 0;
+
+    private goToLink(value: string) {
+        window.open(value);
+    }
+
+    private showMoreResults() {
+        this.paginationIndex++;
+        this.$emit("showMore", this.paginationIndex);
+    }
+
+    private collapseResults() {
+        this.paginationIndex = 0;
+        this.$emit("collapseResults");
+    }
 }
 </script>
 

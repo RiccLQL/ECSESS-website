@@ -1,6 +1,8 @@
-const handler = async (req, res, next, model, method, error, success, getWhere = undefined, putId = undefined, deleteId = undefined, getOrderBy = undefined, getLimit = undefined) => {
+const { ObjectId } = require("mongodb");
+
+const handler = async (req, res, next, model, method, error, success, option, option2, option3) => {
     try {
-        let data = await methodSwitch(method, req, model, putId, deleteId, getWhere, getOrderBy);
+        let data = await methodSwitch(method, req, model, option, option2, option3);
         if (data) {
             return res.status(200).json({
                 success: true,
@@ -21,7 +23,7 @@ const handler = async (req, res, next, model, method, error, success, getWhere =
     }
 }
 
-async function methodSwitch(method, req, model, putId, deleteId, getWhere, getOrderBy) {
+async function methodSwitch(method, req, model, option, option2, option3) {
     let data = "";
     let m = model;
     switch (method) {
@@ -29,26 +31,41 @@ async function methodSwitch(method, req, model, putId, deleteId, getWhere, getOr
             data = m.find({});
             return data;
         case "GETBY":
-            if (getWhere) data = await m.find(getWhere).exec();
+            if (option) data = await m.find(option);
             else throw new Error("Did not specify get condition");
             return data;
-        case "GETORDERBY":
-            if (getOrderBy) data = await m.find({}).sort(getOrderBy).limit(5);
-            else throw new Error("Did not specify order type");
+        case "GETPAGINATEDBY":
+            if (option && option2 && option3) data = await m.find(option).sort(option2).skip(5 * option3).limit(5);
+            else throw new Error("Did not specify get condition, pagination index or order type");
             return data;
-        case "GETLIMIT":
-            if (getLimit) data = await m.find({}).limit(getLimit);
-            else throw new Error("Did not specify limit");
+        case "GETPAGINATED":
+            if (option && option2) data = await m.find({}).sort(option).skip(5 * option2).limit(5);
+            else throw new Error("Did not specify pagination index or order type");
+            return data;
+        case "GETBYLIMIT":
+            if (option && option2 && option3) data = await m.find(option).sort(option2).limit(option3);
+            else throw new Error("Did not specify get condition, limit and order type");
+            return data;
+        case "GETWITHINTIME":
+            if (option && option2) data = await m.find(option).sort(option2);
+            else throw new Error("Did not specify timeframe or order type");
+            return data;
+        case "GETSIZE":
+            data = await m.countDocuments({});
             return data;
         case "POST":
             data = await m.create(req.body);
             return data;
         case "PUT":
-            if (putId) data = await m.updateOne({ id: putId });
-            else throw new Error("Could not Update");
+            if (option) {
+                data = await m.findByIdAndUpdate(option, req.body.data);
+            }
+            else {
+                throw new Error("Could not Update");
+            }
             return data;
         case "DELETE":
-            if (deleteId) data = await m.deleteOne({ id: deleteId });
+            if (option) data = await m.deleteOne({ _id: option });
             else throw new Error("Could not Delete");
             return data;
     }

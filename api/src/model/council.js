@@ -1,19 +1,12 @@
 const mongoose = require("mongoose");
 
-const execsSchema = new mongoose.Schema({
+const membersSchema = new mongoose.Schema({
     name: String,
     description: String,
     position: String,
     image: String,
     email: String,
+    category: String,
 })
 
-const repsSchema = new mongoose.Schema({
-    name: String,
-    description: String,
-    position: String,
-    image: String,
-    email: String,
-})
-
-module.exports = { execsSchema, repsSchema };
+module.exports = { membersSchema };

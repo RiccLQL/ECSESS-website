@@ -60,51 +60,46 @@ import CarouselSlide, { SlideObject } from "@/components/CarouselSlide.vue";
   },
 })
 export default class Carousel extends Vue {
-  @Prop() slides!: SlideObject[];
-  @Prop() autoLoop!: boolean;
+    @Prop() slides!: SlideObject[];
+    @Prop() autoLoop!: boolean;
 
-  private buttonSize: ButtonSizes = ButtonSizes.medium;
-  private buttonLeftArrow: string = "ᐸ";
-  private buttonRightArrow: string = "ᐳ";
-  private buttonColor: string = colors.get().input;
+    private buttonSize: ButtonSizes = ButtonSizes.medium;
+    private buttonLeftArrow: string = "ᐸ";
+    private buttonRightArrow: string = "ᐳ";
+    private buttonColor: string = colors.get().input;
 
-  private carouselRotationIndex: number = 0;
-  private carouselMaxRotation: number = this.slides.length - 1;
+    private carouselRotationIndex: number = 0;
 
-  private timer!: NodeJS.Timeout;
+    private timer!: NodeJS.Timeout;
 
-  private rotate(direction: string): void {
-    if (this.carouselMaxRotation > 0) {
-      let tempIndex = this.carouselRotationIndex;
-      this.carouselRotationIndex = -1;
+    private rotate(direction: string): void {
+        if (this.slides.length - 1 > 0) {
+            let tempIndex = this.carouselRotationIndex;
+            this.carouselRotationIndex = -1;
 
-      clearInterval(this.timer);
+            clearInterval(this.timer);
 
-      setTimeout(() => {
-        if (direction === "left") {
-          if (tempIndex === 0)
-            this.carouselRotationIndex = this.carouselMaxRotation;
-          else this.carouselRotationIndex = tempIndex - 1;
-        } else if (direction === "right") {
-          if (tempIndex === this.carouselMaxRotation)
-            this.carouselRotationIndex = 0;
-          else this.carouselRotationIndex = tempIndex + 1;
+            setTimeout(() => {
+                if (direction === "left") {
+                    if (tempIndex === 0) this.carouselRotationIndex = this.slides.length - 1;
+                    else this.carouselRotationIndex = tempIndex - 1;
+                } else if (direction === "right") {
+                    if (tempIndex === this.slides.length - 1) this.carouselRotationIndex = 0;
+                    else this.carouselRotationIndex = tempIndex + 1;
+                }
+            }, 150);
+
+            this.timer = setInterval(() => {
+                this.rotate("right");
+            }, 5000);
         }
-      }, 150);
-
-      this.timer = setInterval(() => {
-        this.rotate("right");
-      }, 5000);
     }
-  }
 
-  created() {
-    if (this.autoLoop && this.carouselMaxRotation > 0) {
-      this.timer = setInterval(() => {
-        this.rotate("right");
-      }, 5000);
+    created() {
+        if (this.autoLoop && (this.slides.length - 1) > 0) {
+            this.timer = setInterval(() => { this.rotate("right"); }, 5000);
+        }
     }
-  }
 }
 </script>
 

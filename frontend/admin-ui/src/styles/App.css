@@ -64,6 +64,11 @@ textarea {
   color: var(--textColor);
 }
 
+img {
+  width: 10rem;
+  height: auto;
+}
+
 ::-webkit-input-placeholder { /* Edge */
     color: var(--textColor);
   }
@@ -99,6 +104,7 @@ h4 {
   color: var(--textColor);
   font-size: var(--mediumFontSize);
   font-weight: var(--mediumFont);
+  margin: 0.5rem 0;
 }
 
 p {
@@ -170,7 +176,7 @@ p {
   width: 100%;
 }
 
-.grid {
+.list {
   display: grid;
   grid-template-columns: auto auto auto;
   margin-bottom: 1rem;

@@ -1,10 +1,7 @@
 import React from 'react';
 import { Button } from './Button';
 import { ButtonSizes } from './Enums';
-
-interface Props {
-    changeView: (item: string) => void,
-}
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 export enum SidebarItems {
     events = 'Events',
@@ -16,10 +13,9 @@ export enum SidebarItems {
     home = 'Home',
 }
 
-export const Sidebar = (props: Props): JSX.Element => {
+export const Sidebar = (): JSX.Element => {
 
-    const changeView = (item: string | undefined) => {
-        if (item) props.changeView(item);
+    const goToLink = (): void => {
     }
 
     return (
@@ -28,7 +24,7 @@ export const Sidebar = (props: Props): JSX.Element => {
                 [SidebarItems.home, SidebarItems.events, SidebarItems.council, SidebarItems.jobs, SidebarItems.news, SidebarItems.photos, SidebarItems.resources].map((item) => {
                     return (
                         <div className="sidebar-item" key={item}>
-                            <Button handleClick={changeView} params={item} text={item} size={ButtonSizes.medium} />
+                            <Link to={`/${item}`} id={`link-${item}`}><Button size={ButtonSizes.medium} text={item} handleClick={goToLink}/></Link>
                         </div>
                     )
                 })
