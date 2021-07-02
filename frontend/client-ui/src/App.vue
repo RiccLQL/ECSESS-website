@@ -10,6 +10,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import NavBar from "@/components/NavBar.vue";
 import BottomBar from "@/components/BottomBar.vue";
+import colors from "@/styles/colors";
 
 @Component({
   name: "App",
@@ -18,11 +19,34 @@ import BottomBar from "@/components/BottomBar.vue";
     BottomBar,
   },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  created() {
+    let storedTheme = localStorage.getItem("theme");
+    if (storedTheme) colors.setTheme(storedTheme, document.documentElement);
+    else colors.setTheme("dark", document.documentElement);
+  }
+}
 </script>
 
 <style lang="scss">
 //general elements
+
+:root[data-theme="dark"] {
+  //prefer dark theme
+  --backgroundColor: #26292f;
+  --mainColor: #363a41;
+  --textColor: #ffffff;
+  --inputColor: #4f5662;
+  --accentColor: #00904b;
+}
+
+html[data-theme="light"] {
+  --backgroundColor: #ffffff;
+  --mainColor: #1fb16b;
+  --textColor: #272727;
+  --inputColor: #cfcfcf;
+  --accentColor: #63ca98;
+}
 
 html {
   scroll-behavior: smooth;
@@ -30,20 +54,21 @@ html {
 
 a {
   text-decoration: none;
-  color: $darktext;
+  color: var(--textColor);
   user-select: none;
 }
 
 body {
   margin: 0;
-  background-color: $darkbackground;
+  background-color: var(--backgroundColor);
+  transition: 0.3s all ease;
 }
 
 //text stuff
 
 h1 {
   font-family: $defaultfont;
-  color: $darktext;
+  color: var(--textColor);
   font-size: $title-size;
   font-weight: $light;
   margin: 0;
@@ -51,28 +76,28 @@ h1 {
 
 h2 {
   font-family: $defaultfont;
-  color: $darktext;
+  color: var(--textColor);
   font-size: $medium-size;
   font-weight: $medium;
 }
 
 h3 {
   font-family: $defaultfont;
-  color: $darktext;
+  color: var(--textColor);
   font-size: $large-size;
   font-weight: $medium;
   margin: 0;
 }
 h4 {
   font-family: $defaultfont;
-  color: $darktext;
+  color: var(--textColor);
   font-size: $medium-size;
   font-weight: $bold;
 }
 
 p {
   font-family: $defaultfont;
-  color: $darktext;
+  color: var(--textColor);
   font-size: $small-size;
   font-weight: $light;
 }

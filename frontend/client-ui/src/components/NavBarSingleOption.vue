@@ -1,22 +1,24 @@
 <template>
-    <div @click="dropdownToggle()">
-        <router-link class="navbar-item flex-horizontal" :to="{path: `/${path}`}">{{text}}</router-link>
-    </div>
+  <div @click="dropdownToggle()">
+    <router-link class="navbar-item flex-horizontal" :to="{ path: `/${path}` }">
+      {{ text }}
+    </router-link>
+  </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({
-    name: "NavBarSingleOption",
+  name: "NavBarSingleOption",
 })
 export default class NavBarSingleOption extends Vue {
-    @Prop() private path!: string;
-    @Prop() private text!: string;
-    @Prop() private listId!: number;
+  @Prop() private path!: string;
+  @Prop() private text!: string;
+  @Prop() private listId!: number;
 
-    private dropdownToggle(): void {
-        this.$emit('dropdown', this.listId);
-    }
+  private dropdownToggle(): void {
+    this.$emit("dropdown", this.listId);
+  }
 }
 </script>
