@@ -10,7 +10,6 @@ function updateColors(el: HTMLElement): void {
     text = getComputedStyle(el).getPropertyValue("--textColor");
     input = getComputedStyle(el).getPropertyValue("--inputtColor");
     accent = getComputedStyle(el).getPropertyValue("--accentColor");
-    console.log(background);
 }
 
 function setTheme(theme: string, el: HTMLElement) {

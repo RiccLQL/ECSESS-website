@@ -48,7 +48,6 @@ export default class EventsCalendar extends Vue {
             const upcomingEventsProcessed: CalendarItem[] = upcomingEventsRawData ?  upcomingEventsRawData.map(events => ({ title: events.title, description: events.description, image: { alt: "upcoming event", path: events.image }, link: events.link, date: new Intl.DateTimeFormat('en-CA').format(new Date(events.date))})) : [];
             return upcomingEventsProcessed;
         })
-        console.log(moreEvents);
         this.eventsCalendar = this.eventsCalendar.concat(moreEvents);
     }
 

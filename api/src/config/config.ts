@@ -3,7 +3,8 @@
  * @author Ricky Liu
  */
 
-require("dotenv").config();
+import dotenv from 'dotenv';
+dotenv.config();
 
 const {
     PORT,
@@ -24,9 +25,12 @@ const {
     MONGODB_RESOURCES,
     MONGODB_JOBS,
     MONGODB_COUNCIL,
+    SENDGRID_API_KEY,
+    SMTP_EMAIL,
+    SMTP_PASSWORD,
 } = process.env;
 
-const config = {
+export const config = {
     backend: {
         PORT,
         TESTPORT,
@@ -46,12 +50,13 @@ const config = {
         EMAILPORT,
         EMAILUSER,
         EMAILPASS,
-        LIVEWIREEMAIL
+        LIVEWIREEMAIL,
+        SENDGRID_API_KEY,
+        SMTP_EMAIL,
+        SMTP_PASSWORD,
     },
     aws: {
         AWSACCESSKEY,
         AWSSECRET
     }
 };
-
-module.exports = config;

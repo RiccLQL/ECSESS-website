@@ -2,6 +2,7 @@
   <div class="input">
     <textarea
       v-if="inputType === 'textarea'"
+      v-model="inputValue"
       :placeholder="placeholder"
       :type="inputType"
       :style="{ height: height }"

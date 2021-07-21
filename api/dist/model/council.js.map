@@ -1,0 +1,1 @@
+{"version":3,"file":"council.js","sourceRoot":"","sources":["../../src/model/council.ts"],"names":[],"mappings":";;;AAAA,uCAAkC;AAErB,QAAA,aAAa,GAA0B,IAAI,iBAAM,CAAgB;IAC1E,IAAI,EAAE,MAAM;IACZ,WAAW,EAAE,MAAM;IACnB,QAAQ,EAAE,MAAM;IAChB,KAAK,EAAE,MAAM;IACb,KAAK,EAAE,MAAM;IACb,QAAQ,EAAE,MAAM;CACnB,CAAC,CAAA"}

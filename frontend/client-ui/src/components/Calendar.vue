@@ -39,10 +39,10 @@
         </div>
       </div>
     </div>
-    <div class="margin-bottom">
+    <div class="small-margin-bottom" v-if="!limit">
         <Button v-if="totalCount > 5 && calendar.length < totalCount" :clickParams="null" :color="buttonColor" :size="buttonSize" text="More Results" @handleClick="showMoreResults"/>
     </div>
-    <div class="margin-bottom">
+    <div class="margin-bottom" v-if="!limit">
         <Button v-if="calendar.length > 5" :clickParams="null" :color="collapseButtonColor" :size="buttonSize" text="Collapse Results" @handleClick="collapseResults"/>
     </div>
   </div>
@@ -74,6 +74,7 @@ export interface CalendarItem {
 export default class Calendar extends Vue {
     @Prop() calendar!: CalendarItem[];
     @Prop() totalCount!: number;
+    @Prop() limit?: boolean;
 
     private buttonSize: ButtonSizes = ButtonSizes.medium;
     private buttonColor: string = colors.get().accent;
@@ -124,5 +125,9 @@ export default class Calendar extends Vue {
 
 .calendar-picture:hover {
   filter: unset;
+}
+
+.small-margin-bottom {
+  margin-bottom: 0.8rem;
 }
 </style>

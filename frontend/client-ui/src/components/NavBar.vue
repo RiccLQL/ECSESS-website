@@ -83,7 +83,6 @@ export default class Home extends Vue {
   private scrollListener(event: Event): void {
     if (window.scrollY > 0) {
       this.colorToggle = colors.get().main;
-      console.log(colors.get().main);
     } else {
       this.colorToggle = colors.get().background;
     }

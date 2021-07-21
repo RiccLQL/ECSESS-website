@@ -31,7 +31,7 @@
     <Carousel :slides="featuredNews" :autoLoop="true" />
     <Divider />
     <Subtitle subtitle="Upcoming Events" />
-    <Calendar :calendar="upcomingEvents" @showMore="showMoreUpcomingEvents" :totalCount="upcomingEventsSize" @collapseResults="collapseUpcomingEvents"/>
+    <Calendar :calendar="upcomingEvents" @showMore="showMoreUpcomingEvents" :totalCount="upcomingEventsSize" @collapseResults="collapseUpcomingEvents" limit="true"/>
     <Divider />
     <Subtitle subtitle="Promote your event with ECSE students" />
     <TextArea
@@ -158,12 +158,12 @@ export default class Home extends Vue {
       headers: { "X-Requested-With": "XMLHttpRequest" },
     };
     axios.post(url, data, config).then((result) => {
-      axios.post("/home/livewire/email", {
-        senderName: this.livewireForm[0].value,
-        senderEmail: this.livewireForm[1].value,
-        senderOrganization: this.livewireForm[2].value,
-        subject: this.livewireForm[3].value,
-        message: this.livewireForm[4].value,
+      console.log(this.livewireForm[4].value)
+      axios.post("/email/livewire", {
+        to: process.env.VUE_APP_VP_COMMS_EMAIL,
+        from: this.livewireForm[1].value,
+        subject: `[${this.livewireForm[2].value} -- ${this.livewireForm[0].value} -- ${this.livewireForm[1].value}] ${this.livewireForm[3].value}`,
+        text: this.livewireForm[4].value,
         image: result.data.secure_url,
       });
     });

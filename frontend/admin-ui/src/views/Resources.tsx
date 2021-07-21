@@ -91,7 +91,6 @@ export const Resources = (): JSX.Element => {
     }
 
     const submitResourceCategory = (data: any): void => {
-        console.log(data.name);
         if (!resourceCategories.includes(data.name)) {
             axios.post("/resources/category", { name: data.name });
         }

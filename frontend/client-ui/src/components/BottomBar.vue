@@ -3,9 +3,9 @@
     <div class="flex-vertical">
       <h4>Electrical, Computer & Software Engineering Students' Society @ McGill</h4>
       <div class="flex-horizontal">
-        <a href="https://www.instagram.com/mcgill_ecsess/" class="social-media"><Picture alt="Instagram" path="https://res.cloudinary.com/ecsess-website/image/upload/v1625194522/instagram_2_ld4hje.png" :size="logoSize"/></a>
-        <a href="https://www.facebook.com/ECSESS" class="social-media"><Picture alt="Facebook" path="https://res.cloudinary.com/ecsess-website/image/upload/v1625194522/facebook_jcchsn.png" :size="logoSize"/></a>
-        <a href="https://vm.tiktok.com/ZMd6u7CV4/" class="social-media"><Picture alt="Tiktok" path="https://res.cloudinary.com/ecsess-website/image/upload/v1625194522/tik-tok_zg9zjq.png" :size="logoSize"/></a>
+        <a href="https://www.instagram.com/mcgill_ecsess/" target="_blank" class="social-media"><Picture alt="Instagram" path="https://res.cloudinary.com/ecsess-website/image/upload/v1625194522/instagram_2_ld4hje.png" :size="logoSize"/></a>
+        <a href="https://www.facebook.com/ECSESS" target="_blank" class="social-media"><Picture alt="Facebook" path="https://res.cloudinary.com/ecsess-website/image/upload/v1625194522/facebook_jcchsn.png" :size="logoSize"/></a>
+        <a href="https://vm.tiktok.com/ZMd6u7CV4/" target="_blank" class="social-media"><Picture alt="Tiktok" path="https://res.cloudinary.com/ecsess-website/image/upload/v1625194522/tik-tok_zg9zjq.png" :size="logoSize"/></a>
       </div>
       <p>3630 Rue University, Montréal, QC H3A 2B3</p>
       <p>All Rights Reserved</p>
