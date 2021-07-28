@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <NavBar />
-    <router-view />
+    <div class="app-margins">
+      <router-view />
+    </div>
     <BottomBar />
   </div>
 </template>
@@ -104,6 +106,10 @@ p {
 }
 
 //formatting
+
+.app-margins {
+  margin: 0 15rem;
+}
 
 .centered {
   text-align: center;

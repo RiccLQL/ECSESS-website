@@ -49,7 +49,7 @@ import Subtitle from "@/components/Subtitle.vue";
 import Carousel from "@/components/Carousel.vue";
 import { SlideObject } from "@/components/CarouselSlide.vue";
 import Form from "@/components/Form.vue";
-import { InputObject } from "@/components/FormInput.vue";
+import { FileInputTypes, InputObject } from "@/components/FormInput.vue";
 import TextArea from "@/components/TextArea.vue";
 import axios from "axios";
 import FormData from "form-data";
@@ -146,6 +146,7 @@ export default class Home extends Vue {
       placeholder: "Attach Image",
       value: this.livewirePicture,
       inputType: "file",
+      fileInputType: FileInputTypes.image,
     },
   ];
 
@@ -158,7 +159,6 @@ export default class Home extends Vue {
       headers: { "X-Requested-With": "XMLHttpRequest" },
     };
     axios.post(url, data, config).then((result) => {
-      console.log(this.livewireForm[4].value)
       axios.post("/email/livewire", {
         to: process.env.VUE_APP_VP_COMMS_EMAIL,
         from: this.livewireForm[1].value,

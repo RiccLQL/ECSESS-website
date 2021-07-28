@@ -18,7 +18,7 @@ export default class NavBarDropdown extends Vue {}
   background-color: var(--textColor);
   border-radius: 0.1rem;
   height: 0.2rem;
-  width: 70%;
+  width: 100%;
   margin: 4rem 0 4rem 0;
 }
 </style>

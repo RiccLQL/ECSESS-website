@@ -9,6 +9,7 @@
         :value="input.value"
         :index="index"
         :height="input.height"
+        :fileInputType="input.fileInputType ? input.fileInputType : undefined"
         @changeValue="onValueChange"
       />
       <FormInput inputType="submit" />

@@ -68,7 +68,7 @@ export default class Grid extends Vue {
 <style lang="scss" scoped>
 .grid {
   display: grid;
-  width: 60%;
+  width: 100%;
   grid-template-columns: 33.33% 33.33% 33.33%;
 }
 

@@ -28,9 +28,10 @@ export const emailSender = async (req: Request, res: Response, next: NextFunctio
         text: req.body.text,
     }
     if (req.body.image) {
+        console.log(req.body.image);
         msg.attachments = [
             {
-                filename: req.body.image.substring(req.body.image.lastIndexOf('/' + 1)),
+                filename: req.body.image.substring(req.body.image.lastIndexOf('/') + 1),
                 path: req.body.image,
             }
         ]

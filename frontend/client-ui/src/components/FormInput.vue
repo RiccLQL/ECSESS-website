@@ -20,6 +20,7 @@
         id="file-input"
         required
         v-on:change="onFileChanged"
+        :accept="fileInputType"
       />
       <Button
         :color="fileButtonColor"
@@ -46,6 +47,11 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import colors from "@/styles/colors";
 import Button, { ButtonSizes } from "@/components/Button.vue";
+
+export enum FileInputTypes {
+  image = '.jpg,.png',
+  document = '.pdf,.docx,.doc,.xlsx,.xls,.csv,.jpg,.png',
+}
 
 export interface InputObject {
   placeholder: string;
@@ -76,6 +82,7 @@ export interface InputObject {
     | "week";
   height?: "20rem";
   name: string;
+  fileInputType?: FileInputTypes;
 }
 
 @Component({
@@ -112,6 +119,7 @@ export default class FormInput extends Vue {
     | "url"
     | "week";
   @Prop() index!: number;
+  @Prop() fileInputType?: FileInputTypes;
 
   private fileButtonColor: string = colors.get().input;
   private fileButtonSize: ButtonSizes = ButtonSizes.medium;

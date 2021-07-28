@@ -22,8 +22,17 @@ interface MemberModel {
     email: string,
 }
 
+interface ResourceModel {
+    title: string,
+    description: string,
+    image: string,
+    link: string,
+    category: string,
+}
+
 export {
     NewsModel,
     EventModel,
     MemberModel,
+    ResourceModel,
 }

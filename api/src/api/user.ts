@@ -41,7 +41,11 @@ user.get(`${eventsBase}/byCategory/month`, async (req, res, next) => {await hand
 
 /** GET all events of a specific category */
 user.get(`${eventsBase}/byCategory`, async (req, res, next) => {await handler(req, res, next, models.Events, Method.GETBY, "Could not fetch response of upcoming events", "Fetched response of upcoming events successfully", { category: req.query.category })});
+
 // resources
+
+/** GET all resources by category */
+user.get(`${resourcesBase}/byCategory`, async (req, res, next) => {await handler(req, res, next, models.Resources, Method.GETBY, "Could not fetch resources by category", "Fetched resources by category successfully", { category: req.query.category })});
 
 // news
 /** GET featured news */
@@ -50,6 +54,8 @@ user.get(`${newsBase}/featured`, async (req, res, next) => {await handler(req, r
 // email
 
 user.post(`${emailBase}/livewire`, async (req, res, next) => {await emailSender(req, res, next)});
+
+user.post(`${emailBase}/academic`, async (req, res, next) => {await emailSender(req, res, next)});
 
 // photos
 
