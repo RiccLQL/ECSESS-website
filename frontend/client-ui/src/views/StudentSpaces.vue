@@ -2,6 +2,7 @@
   <div>
     <PageCover title="Student Spaces" />
     <Divider />
+    <Subtitle subtitle="Coming Soon" />
   </div>
 </template>
 

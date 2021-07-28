@@ -2,6 +2,7 @@
   <div>
     <PageCover title="Other Resources" />
     <Divider />
+    <Subtitle subtitle="Coming Soon" />
   </div>
 </template>
 

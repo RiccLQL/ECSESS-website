@@ -2,6 +2,7 @@
   <div>
     <PageCover title="Mental Health Resources" />
     <Divider />
+    <Subtitle subtitle="Coming Soon" />
   </div>
 </template>
 

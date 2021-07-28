@@ -2,6 +2,7 @@
   <div>
     <PageCover title="ECSESSBits" subtitle="ECSE First Year Council" />
     <Divider />
+    <Subtitle subtitle="Coming Soon" />
   </div>
 </template>
 

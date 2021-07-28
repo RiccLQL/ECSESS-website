@@ -2,6 +2,7 @@
   <div>
     <PageCover title="ECSE Photo Archive" />
     <Divider />
+    <Subtitle subtitle="Coming Soon" />
   </div>
 </template>
 
