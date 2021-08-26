@@ -14,6 +14,7 @@ enum pathNames {
     JOIN = 'join',
     DOCS = 'docs',
     TECH = 'tech',
+    SOCIAL_HANDLES = 'social-media',
 }
 
 export default pathNames;

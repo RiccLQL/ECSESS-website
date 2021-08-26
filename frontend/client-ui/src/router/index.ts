@@ -98,6 +98,11 @@ const routes: Array<RouteConfig> = [
     name: "Student Spaces",
     component: () => import("../views/StudentSpaces.vue"),
   },
+  {
+    path: baseSlash + pathNames.SOCIAL_HANDLES,
+    name: "Social Media Links",
+    redirect: 'https://linktr.ee/ecsess',
+  }
 ];
 
 const router = new VueRouter({

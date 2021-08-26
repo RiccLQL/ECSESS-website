@@ -98,6 +98,10 @@ export default class App extends Vue {
     name: "Resources",
     paths: this.resourceDropdown,
   };
+  private contactRoute: NavBarRouteObject = {
+    name: "Social Media Links",
+    path: pathNames.SOCIAL_HANDLES,
+  }
   private photosRoute: NavBarRouteObject = {
     name: "Photos",
     path: pathNames.PHOTOS,
