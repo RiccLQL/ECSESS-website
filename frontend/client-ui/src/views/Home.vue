@@ -30,9 +30,6 @@
     <Subtitle subtitle="Featured News" />
     <Carousel :slides="featuredNews" :autoLoop="true" />
     <Divider />
-    <Subtitle subtitle="Upcoming Events" />
-    <Calendar :calendar="upcomingEvents" @showMore="showMoreUpcomingEvents" :totalCount="upcomingEventsSize" @collapseResults="collapseUpcomingEvents" limit="true"/>
-    <Divider />
     <Subtitle subtitle="Promote your event with ECSE students" />
     <TextArea
       text="Send a message to be featured on the ECSESS newsletter, to be shared with all ECSE students!"
