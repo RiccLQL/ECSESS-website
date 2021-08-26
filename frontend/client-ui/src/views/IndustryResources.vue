@@ -64,7 +64,7 @@ import axios from 'axios';
 import TextArea from "@/components/TextArea.vue";
 import Grid, { GridCellObject } from "@/components/Grid.vue";
 import JobResults, { JobResultItem } from "@/components/JobResults.vue";
-import { ResourceModel } from "@/axios/modelInterfaces.vue";
+import { ResourceModel } from '@/axios/modelInterfaces';
 
 @Component({
   name: "IndustryResources",
