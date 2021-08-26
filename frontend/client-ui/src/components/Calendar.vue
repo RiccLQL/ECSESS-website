@@ -26,7 +26,6 @@
         </div>
         <div class="calendar-event flex-vertical sixty">
           <h2 class="left">{{ item.title }}</h2>
-          <p class="left">{{ item.description }}</p>
         </div>
         <div class="calendar-event-button twenty flex-vertical">
           <Button
