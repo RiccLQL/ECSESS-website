@@ -60,9 +60,11 @@ import { InputObject } from "@/components/FormInput.vue";
 import Picture, { ImageObject, ImageSize } from "@/components/Picture.vue";
 import Button, { ButtonSizes } from "@/components/Button.vue";
 import colors from "@/styles/colors";
+import axios from 'axios';
 import TextArea from "@/components/TextArea.vue";
 import Grid, { GridCellObject } from "@/components/Grid.vue";
 import JobResults, { JobResultItem } from "@/components/JobResults.vue";
+import { ResourceModel } from "@/axios/modelInterfaces.vue";
 
 @Component({
   name: "IndustryResources",
@@ -96,7 +98,7 @@ export default class IndustryResources extends Vue {
   private jobResults: JobResultItem[] = [
   ];
 
-  private created() {
+  private async created() {
     this.jobHelpGrid = await axios.get(`/resources/byCategory`, {params: {category: "Industry"}}).then((result) => {
         const resourcesRawData: ResourceModel[] = result.data.data;
         const resourcesProcessed: GridCellObject[] = resourcesRawData.map(resource => ({ title: resource.title, description: resource.description, image: { alt: "Industry Resource", path: resource.image }, button: `Visit ${resource.title}`, buttonLink: resource.link }));
