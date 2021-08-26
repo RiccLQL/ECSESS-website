@@ -80,71 +80,9 @@ import JobResults, { JobResultItem } from "@/components/JobResults.vue";
 })
 export default class IndustryResources extends Vue {
   private jobHelpGrid: GridCellObject[] = [
-    {
-      title: "Job Application Hours",
-      description:
-        "June 6 - Montreal Science Center - Networking Event for eeeee's",
-      image: {
-        path: "https://res.cloudinary.com/ecsess-website/image/upload/v1623389518/ECSESSCapade_2017_in_Toronto_wsurqf.jpg",
-        alt: "cheez",
-      },
-      button: "Visit Event Page",
-      buttonLink: "https://www.facebook.com/",
-    },
-    {
-      title: "ECC McGill",
-      description: "July 7",
-      image: {
-        path: "https://res.cloudinary.com/ecsess-website/image/upload/v1623389518/ECSESSCapade_2017_in_Toronto_wsurqf.jpg",
-        alt: "cheez",
-      },
-      button: "Visit Event Page",
-      buttonLink: "https://www.facebook.com/",
-    },
-    {
-      title: "CV and Cover Letter Resources",
-      description: "July 8",
-      image: {
-        path: "https://res.cloudinary.com/ecsess-website/image/upload/v1623389518/ECSESSCapade_2017_in_Toronto_wsurqf.jpg",
-        alt: "cheez",
-      },
-      button: "Visit Event Page",
-      buttonLink: "https://www.facebook.com/",
-    },
   ];
 
   private projectHelpGrid: GridCellObject[] = [
-    {
-      title: "McGill Engine",
-      description:
-        "June 6 - Montreal Science Center - Networking Event for eeeee's",
-      image: {
-        path: "https://res.cloudinary.com/ecsess-website/image/upload/v1623389518/ECSESSCapade_2017_in_Toronto_wsurqf.jpg",
-        alt: "cheez",
-      },
-      button: "Visit Event Page",
-      buttonLink: "https://www.facebook.com/",
-    },
-    {
-      title: "Dobson",
-      description: "July 7",
-      image: {
-        path: "https://res.cloudinary.com/ecsess-website/image/upload/v1623389518/ECSESSCapade_2017_in_Toronto_wsurqf.jpg",
-        alt: "cheez",
-      },
-      button: "Visit Event Page",
-      buttonLink: "https://www.facebook.com/",
-    },
-    {
-      title: "Montreal Startup Ecosystem",
-      description: "July 8",
-      image: {
-        path: "https://res.cloudinary.com/ecsess-website/image/upload/v1623389518/ECSESSCapade_2017_in_Toronto_wsurqf.jpg",
-        alt: "cheez",
-      },
-      button: "Visit Event Page",
-      buttonLink: "https://www.facebook.com/",
-    },
   ];
 
   private jobType: "electrical" | "software" | "computer" | "" = "";
@@ -156,25 +94,21 @@ export default class IndustryResources extends Vue {
   }
 
   private jobResults: JobResultItem[] = [
-    {
-      company: "Google",
-      jobTitle: "Software Developer Intern",
-      jobReqs: "C++, Python",
-      link: "google.ca",
-    },
-    {
-      company: "Google",
-      jobTitle: "Software Developer Intern",
-      jobReqs: "C++, Python",
-      link: "google.ca",
-    },
-    {
-      company: "Google",
-      jobTitle: "Software Developer Intern",
-      jobReqs: "C++, Python",
-      link: "google.ca",
-    },
   ];
+
+  private created() {
+    this.jobHelpGrid = await axios.get(`/resources/byCategory`, {params: {category: "Industry"}}).then((result) => {
+        const resourcesRawData: ResourceModel[] = result.data.data;
+        const resourcesProcessed: GridCellObject[] = resourcesRawData.map(resource => ({ title: resource.title, description: resource.description, image: { alt: "Industry Resource", path: resource.image }, button: `Visit ${resource.title}`, buttonLink: resource.link }));
+        return resourcesProcessed;
+    })
+
+    this.jobHelpGrid = await axios.get(`/resources/byCategory`, {params: {category: "Projects"}}).then((result) => {
+        const resourcesRawData: ResourceModel[] = result.data.data;
+        const resourcesProcessed: GridCellObject[] = resourcesRawData.map(resource => ({ title: resource.title, description: resource.description, image: { alt: "Project Resource", path: resource.image }, button: `Visit ${resource.title}`, buttonLink: resource.link }));
+        return resourcesProcessed;
+    })
+  }
 
   private buttonColor: string = colors.get().input;
   private buttonSize: ButtonSizes = ButtonSizes.big;

@@ -78,7 +78,7 @@ export default class AcademicResources extends Vue {
     private async created() {
         this.eventsList = await axios.get(`/events/byCategory`, {params: {category: "Academic"}}).then((result) => {
             const eventsRawData: EventModel[] = result.data.data;
-            const eventsProcessed: ListItem[] = eventsRawData ?  eventsRawData.map(events => ({ title: events.title, description: `${events.description} -- ${new Intl.DateTimeFormat('en-CA').format(new Date(events.date))}`, image: { alt: "upcoming event", path: events.image }, button: "Visit Link", buttonLink: events.link })) : [];
+            const eventsProcessed: ListItem[] = eventsRawData ?  eventsRawData.map(events => ({ title: events.title, description: events.description, image: { alt: "upcoming event", path: events.image }, button: "Visit Link", buttonLink: events.link })) : [];
             return eventsProcessed;
         })
 
