@@ -120,6 +120,7 @@ export default class App extends Vue {
     this.councilRoute,
     this.eventRoute,
     this.resourceRoute,
+    this.contactRoute,
   ];
 }
 </script>
