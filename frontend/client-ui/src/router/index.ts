@@ -102,7 +102,7 @@ const routes: Array<RouteConfig> = [
     path: baseSlash + pathNames.SOCIAL_HANDLES,
     name: "Social Media Links",
     beforeEnter(to, from, next) {
-      window.location.replace("https:/linktr.ee/ecsess")
+      window.location.replace("https://linktr.ee/ecsess")
     },
   }
 ];
