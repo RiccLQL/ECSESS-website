@@ -53,7 +53,7 @@ export const FormInput = (props: Props): JSX.Element => {
                 type === 'textarea' ?
                 <textarea placeholder={props.placeholder} {...props.register(props.name)} />
                 :
-                <input required placeholder={props.placeholder} {...props.register(props.name)} type={type}/>
+                <input placeholder={props.placeholder} {...props.register(props.name)} type={type}/>
             }
         </div>
     )

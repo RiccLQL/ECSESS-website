@@ -41,13 +41,13 @@ export default class AcademicEvents extends Vue {
         let oneMonthString = this.oneMonth.toISOString().split('T')[0];
         this.upcomingEvents = await axios.get(`/events/byCategory/month`, {params: {category: "Academic", date: new Date(oneMonthString)}}).then((result) => {
             const upcomingEventsRawData: EventModel[] = result.data.data;
-            const upcomingEventsProcessed: GridCellObject[] = upcomingEventsRawData ?  upcomingEventsRawData.map(events => ({ title: events.title, description: `${events.description} -- ${new Intl.DateTimeFormat('en-CA').format(new Date(events.date))}`, image: { alt: "upcoming event", path: events.image }, button: "See Event", buttonLink: events.link })) : [];
+            const upcomingEventsProcessed: GridCellObject[] = upcomingEventsRawData ?  upcomingEventsRawData.map(events => ({ title: events.title, description: `${events.description} -- ${new Intl.DateTimeFormat('en-CA').format(new Date(events.date))}`, image: { alt: "upcoming event", path: events.image }, button: "Visit Link", buttonLink: events.link })) : [];
             return upcomingEventsProcessed;
         })
 
         this.eventsList = await axios.get(`/events/byCategory`, {params: {category: "Academic"}}).then((result) => {
             const eventsRawData: EventModel[] = result.data.data;
-            const eventsProcessed: ListItem[] = eventsRawData ?  eventsRawData.map(events => ({ title: events.title, description: `${events.description} -- ${new Intl.DateTimeFormat('en-CA').format(new Date(events.date))}`, image: { alt: "upcoming event", path: events.image }, button: "See Event", buttonLink: events.link })) : [];
+            const eventsProcessed: ListItem[] = eventsRawData ?  eventsRawData.map(events => ({ title: events.title, description: `${events.description} -- ${new Intl.DateTimeFormat('en-CA').format(new Date(events.date))}`, image: { alt: "upcoming event", path: events.image }, button: "Visit Link", buttonLink: events.link })) : [];
             return eventsProcessed;
         })
     }
