@@ -101,7 +101,9 @@ const routes: Array<RouteConfig> = [
   {
     path: baseSlash + pathNames.SOCIAL_HANDLES,
     name: "Social Media Links",
-    redirect: 'https://linktr.ee/ecsess',
+    beforeEnter(to, from, next) {
+      window.location.replace("https:/linktr.ee/ecsess")
+    },
   }
 ];
 
