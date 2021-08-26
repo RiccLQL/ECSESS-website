@@ -57,4 +57,14 @@ export default class NavBarDropdown extends Vue {
   justify-content: space-between;
   align-items: center;
 }
+
+@media only screen and (max-width: 768px) {
+  .navbar-dropdown {
+    background-color: var(--textColor);
+  }
+
+  .navbar-subitem {
+    color: var(--mainColor);
+  }
+}
 </style>

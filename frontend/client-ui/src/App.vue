@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <NavBar />
+    <NavBar :navBarRoutes="navBarRoutes" />
     <div class="app-margins">
       <router-view />
     </div>
@@ -13,6 +13,9 @@ import { Component, Vue } from "vue-property-decorator";
 import NavBar from "@/components/NavBar.vue";
 import BottomBar from "@/components/BottomBar.vue";
 import colors from "@/styles/colors";
+import { NavBarRouteObject } from "@/components/NavBar.vue";
+import pathNames from "@/router/pathNames";
+import { NavBarDropdownObject } from "@/components/NavBarDropdown.vue";
 
 @Component({
   name: "App",
@@ -28,6 +31,92 @@ export default class App extends Vue {
     if (storedTheme) colors.setTheme(storedTheme, document.documentElement);
     else colors.setTheme("dark", document.documentElement);
   }
+
+  destroyed() {
+    window.removeEventListener("resize", this.screenResize);
+  }
+
+  private screenResize(e: UIEvent) {
+    localStorage.setItem('screenSize', window.innerWidth.toString());
+  }
+
+    // Navbar content
+
+  private homeRoute: NavBarRouteObject = { name: "Home", path: pathNames.HOME };
+  private councilDropdown: NavBarDropdownObject[] = [
+    { path: `${pathNames.COUNCIL}`, text: "ECSESS Council" },
+    { path: `${pathNames.COUNCIL}/${pathNames.JOIN}`, text: "Join ECSESS" },
+    {
+      path: `${pathNames.COUNCIL}/${pathNames.DOCS}`,
+      text: "Council Documents",
+    },
+  ];
+  private councilRoute: NavBarRouteObject = {
+    name: "Council",
+    paths: this.councilDropdown,
+  };
+  private eventDropdown: NavBarDropdownObject[] = [
+    { path: `${pathNames.EVENTS}`, text: "Events Calendar" },
+    {
+      path: `${pathNames.EVENTS}/${pathNames.ACADEMIC}`,
+      text: "Academic Events",
+    },
+    {
+      path: `${pathNames.EVENTS}/${pathNames.INDUSTRY}`,
+      text: "Industry & Networking Events",
+    },
+    {
+      path: `${pathNames.EVENTS}/${pathNames.WELLNESS}`,
+      text: "Wellness Events",
+    },
+    { path: `${pathNames.EVENTS}/${pathNames.SOCIAL}`, text: "Social Events" },
+    { path: `${pathNames.EVENTS}/${pathNames.TECH}`, text: "Technical Events" },
+  ];
+  private eventRoute: NavBarRouteObject = {
+    name: "Events",
+    paths: this.eventDropdown,
+  };
+  private resourceDropdown: NavBarDropdownObject[] = [
+    {
+      path: `${pathNames.RESOURCES}/${pathNames.ACADEMIC}`,
+      text: "Academic Resources",
+    },
+    {
+      path: `${pathNames.RESOURCES}/${pathNames.INDUSTRY}`,
+      text: "Industry Resources",
+    },
+    {
+      path: `${pathNames.RESOURCES}/${pathNames.WELLNESS}`,
+      text: "Mental Health Resources",
+    },
+    {
+      path: `${pathNames.RESOURCES}/${pathNames.OTHER}`,
+      text: "Other Resources",
+    },
+  ];
+  private resourceRoute: NavBarRouteObject = {
+    name: "Resources",
+    paths: this.resourceDropdown,
+  };
+  private photosRoute: NavBarRouteObject = {
+    name: "Photos",
+    path: pathNames.PHOTOS,
+  };
+  private fycRoute: NavBarRouteObject = {
+    name: "ECSESSBits",
+    path: pathNames.ECSESSBITS,
+  };
+  private spacesRoute: NavBarRouteObject = {
+    name: "Student Spaces",
+    path: pathNames.STUDENT_SPACES,
+  };
+
+  private navBarRoutes: NavBarRouteObject[] = [
+    this.homeRoute,
+    this.councilRoute,
+    this.eventRoute,
+    this.resourceRoute,
+  ];
 }
 </script>
 

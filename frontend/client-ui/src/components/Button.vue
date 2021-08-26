@@ -1,14 +1,12 @@
 <template>
-  <div>
-    <button
-      :class="hoverable"
-      :style="{ backgroundColor: color, padding: size }"
-      @click="handleClick()"
-      type="button"
-    >
-      {{ text }}
-    </button>
-  </div>
+  <button
+    :class="hoverable"
+    :style="{ backgroundColor: color, padding: size }"
+    @click="handleClick()"
+    type="button"
+  >
+    {{ text }}
+  </button>
 </template>
 
 <script lang="ts">
@@ -27,7 +25,7 @@ export default class PageCover extends Vue {
   @Prop() color!: string;
   @Prop() size!: ButtonSizes;
   @Prop() text!: string;
-  @Prop() clickParams!: string | null;
+  @Prop() clickParams?: string;
   @Prop() hoverable?: "hoverable";
 
   private handleClick(): void {

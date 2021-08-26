@@ -1,33 +1,65 @@
 <template>
-  <div class="navbar" :style="{ backgroundColor: colorToggle }">
-    <div class="logo">
-      <router-link to="/home"><Picture alt="ECSESS Logo" :path="require('@/assets/ecsess-white.png')" :size="logoSize" /></router-link>
+
+  <span v-if="screenSize < 768">
+    <div class="navbar display-flex flex-horizontal" :style="{ backgroundColor: colorToggle }">
+      <div class="logo">
+        <router-link to="/home"><Picture alt="ECSESS Logo" :path="require('@/assets/ecsess-white.png')" :size="logoSize" /></router-link>
+      </div>
+      <div class="flex-vertical">
+        <Button :color="mobileMenuButtonColor" :size="mobileMenuButtonSize" text="Menu" :clickParams="menuExpand" @handleClick="() => { menuExpand = !menuExpand }" />
+        <div v-if="menuExpand" class="navBarMenuExpand absolute">
+          <div v-for="(route, key) in navBarRoutes" :key="key">
+            <NavBarSingleOption
+              v-if="route.path"
+              :path="route.path"
+              :text="route.name"
+              @dropdown="toggleDropdown"
+              :listId="key"
+            />
+            <NavBarDropdown
+              v-if="route.paths"
+              :routes="route.paths"
+              :text="route.name"
+              @dropdown="toggleDropdown"
+              :listId="key"
+              :dropdown="dropdown"
+            />
+          </div>
+        </div>
+      </div>
     </div>
-    <div v-for="(route, key) in navBarRoutes" :key="key">
-      <NavBarSingleOption
-        v-if="route.path"
-        :path="route.path"
-        :text="route.name"
-        @dropdown="toggleDropdown"
-        :listId="key"
-      />
-      <NavBarDropdown
-        v-if="route.paths"
-        :routes="route.paths"
-        :text="route.name"
-        @dropdown="toggleDropdown"
-        :listId="key"
-        :dropdown="dropdown"
-      />
+  </span>  
+  <span v-else>
+    <div class="navbar display-flex flex-horizontal" :style="{ backgroundColor: colorToggle }">
+      <div class="logo">
+        <router-link to="/home"><Picture alt="ECSESS Logo" :path="require('@/assets/ecsess-white.png')" :size="logoSize" /></router-link>
+      </div>
+      <div v-for="(route, key) in navBarRoutes" :key="key">
+        <NavBarSingleOption
+          v-if="route.path"
+          :path="route.path"
+          :text="route.name"
+          @dropdown="toggleDropdown"
+          :listId="key"
+        />
+        <NavBarDropdown
+          v-if="route.paths"
+          :routes="route.paths"
+          :text="route.name"
+          @dropdown="toggleDropdown"
+          :listId="key"
+          :dropdown="dropdown"
+        />
+      </div>
+      <button
+        @click="toggleDisplayMode()"
+        class="display-mode-toggle flex-horizontal cursor-pointer"
+      >
+        <img src="@/assets/sun.svg" v-if="isDarkMode()" class="sun-svg" />
+        <img src="@/assets/moon.svg" v-else class="moon-svg" />
+      </button>
     </div>
-    <button
-      @click="toggleDisplayMode()"
-      class="display-mode-toggle flex-horizontal cursor-pointer"
-    >
-      <img src="@/assets/sun.svg" v-if="isDarkMode()" class="sun-svg" />
-      <img src="@/assets/moon.svg" v-else class="moon-svg" />
-    </button>
-  </div>
+  </span>
 </template>
 
 <script lang="ts">
@@ -39,8 +71,9 @@ import NavBarDropdown, {
 import pathNames from "@/router/pathNames";
 import colors from "@/styles/colors";
 import Picture, { ImageSize } from "@/components/Picture.vue";
+import Button, { ButtonSizes } from "@/components/Button.vue";
 
-interface NavBarRouteObject {
+export interface NavBarRouteObject {
   name: string;
   path?: string;
   paths?: NavBarDropdownObject[];
@@ -52,10 +85,27 @@ interface NavBarRouteObject {
     NavBarSingleOption,
     NavBarDropdown,
     Picture,
+    Button,
   },
 })
-export default class Home extends Vue {
+export default class NavBar extends Vue {
   private logoSize: ImageSize = ImageSize.logo;
+  private menuExpand: boolean = false;
+  private screenSize: number = window.innerWidth;
+
+  private mobileMenuButtonColor: string = colors.get().main;
+  private mobileMenuButtonSize: ButtonSizes = ButtonSizes.big;
+
+  @Prop() private navBarRoutes!: NavBarRouteObject[];
+
+  destroyed() {
+    window.removeEventListener("resize", this.screenResize);
+  }
+
+  private screenResize(e: UIEvent) {
+    console.log(window.innerWidth);
+    this.screenSize = window.innerWidth;
+  }
 
   private toggleDisplayMode(): void {
     const el = document.documentElement;
@@ -90,90 +140,13 @@ export default class Home extends Vue {
 
   created() {
     window.addEventListener("scroll", this.scrollListener);
+    // responsive design: check window size
+    window.addEventListener("resize", this.screenResize);
   }
 
   private dropdown: number = -1;
 
-  // Navbar content
 
-  private homeRoute: NavBarRouteObject = { name: "Home", path: pathNames.HOME };
-  private councilDropdown: NavBarDropdownObject[] = [
-    { path: `${pathNames.COUNCIL}`, text: "ECSESS Council" },
-    { path: `${pathNames.COUNCIL}/${pathNames.JOIN}`, text: "Join ECSESS" },
-    {
-      path: `${pathNames.COUNCIL}/${pathNames.DOCS}`,
-      text: "Council Documents",
-    },
-  ];
-  private councilRoute: NavBarRouteObject = {
-    name: "Council",
-    paths: this.councilDropdown,
-  };
-  private eventDropdown: NavBarDropdownObject[] = [
-    { path: `${pathNames.EVENTS}`, text: "Events Calendar" },
-    {
-      path: `${pathNames.EVENTS}/${pathNames.ACADEMIC}`,
-      text: "Academic Events",
-    },
-    {
-      path: `${pathNames.EVENTS}/${pathNames.INDUSTRY}`,
-      text: "Industry & Networking Events",
-    },
-    {
-      path: `${pathNames.EVENTS}/${pathNames.WELLNESS}`,
-      text: "Wellness Events",
-    },
-    { path: `${pathNames.EVENTS}/${pathNames.SOCIAL}`, text: "Social Events" },
-    { path: `${pathNames.EVENTS}/${pathNames.TECH}`, text: "Technical Events" },
-  ];
-  private eventRoute: NavBarRouteObject = {
-    name: "Events",
-    paths: this.eventDropdown,
-  };
-  private resourceDropdown: NavBarDropdownObject[] = [
-    {
-      path: `${pathNames.RESOURCES}/${pathNames.ACADEMIC}`,
-      text: "Academic Resources",
-    },
-    {
-      path: `${pathNames.RESOURCES}/${pathNames.INDUSTRY}`,
-      text: "Industry Resources",
-    },
-    {
-      path: `${pathNames.RESOURCES}/${pathNames.WELLNESS}`,
-      text: "Mental Health Resources",
-    },
-    {
-      path: `${pathNames.RESOURCES}/${pathNames.OTHER}`,
-      text: "Other Resources",
-    },
-  ];
-  private resourceRoute: NavBarRouteObject = {
-    name: "Resources",
-    paths: this.resourceDropdown,
-  };
-  private photosRoute: NavBarRouteObject = {
-    name: "Photos",
-    path: pathNames.PHOTOS,
-  };
-  private fycRoute: NavBarRouteObject = {
-    name: "ECSESSBits",
-    path: pathNames.ECSESSBITS,
-  };
-  private spacesRoute: NavBarRouteObject = {
-    name: "Student Spaces",
-    path: pathNames.STUDENT_SPACES,
-  };
-
-  private navBarRoutes: NavBarRouteObject[] = [
-    this.homeRoute,
-    this.councilRoute,
-    this.eventRoute,
-    this.resourceRoute,
-    this.photosRoute,
-    this.fycRoute,
-    this.spacesRoute,
-  ];
 
   private toggleDropdown(listId: number): void {
     this.dropdown = listId;
@@ -183,11 +156,6 @@ export default class Home extends Vue {
 
 <style lang="scss">
 .navbar {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  flex-direction: row;
   transition: all 0.3s ease;
   width: 100%;
   position: fixed;
@@ -254,5 +222,34 @@ export default class Home extends Vue {
 .moon-svg {
   width: 1.85rem;
   height: 1.85rem;
+}
+
+.navBarMenuExpand {
+  top: 0;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--mainColor);
+  width: 100vw;
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar {
+    height: 5rem;
+  }
+
+  .navBarMenuExpand {
+    width: 100%;
+    top: 5.2rem;
+  }
+
+  .navbar-item {
+    font-size: 1.5rem;
+    margin: 1rem;
+  }
+
+  .display-mode-toggle {
+    position: relative;
+  }
 }
 </style>
