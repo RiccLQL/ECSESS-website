@@ -140,4 +140,10 @@ export default class Carousel extends Vue {
   border-radius: 50%;
   margin: 0 0.5rem 0 0.5rem;
 }
+
+@media only screen and (max-width: 768px) {
+  .carousel-bg {
+    border: unset;
+  }
+}
 </style>

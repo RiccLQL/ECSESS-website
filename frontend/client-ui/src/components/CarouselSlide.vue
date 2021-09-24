@@ -5,7 +5,7 @@
       v-if="carouselRotation !== undefined ? carouselRotation === index : true"
     >
       <div
-        class="fifty flex-vertical centered overflow-hidden"
+        class="fifty flex-vertical centered overflow-hidden slide-picture"
         :style="{ 'margin-right': '0.5rem' }"
       >
         <Picture :path="image.path" :alt="image.alt" :size="imgSize" />
@@ -15,7 +15,7 @@
         :style="{ 'margin-left': '0.5rem', 'margin-bottom': '1.5rem' }"
       >
         <h4>{{ title }}</h4>
-        <TextArea :text="description" :width="textWidth" />
+        <TextArea class="slide-description" :text="description" :width="textWidth" />
         <Button
           v-if="link"
           :clickParams="link"
@@ -77,5 +77,19 @@ export default class CarouselSlide extends Vue {
   width: 90%;
   height: 20rem;
   overflow: hidden;
+}
+
+@media only screen and (max-width: 768px) {
+  .slide {
+    flex-direction: column;
+  }
+
+  .slide-description {
+    display: none;
+  }
+
+  .slide-picture {
+    display: none;
+  }
 }
 </style>

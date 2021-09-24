@@ -1,7 +1,7 @@
 <template>
 
   <span v-if="screenSize < 768">
-    <div class="navbar display-flex flex-horizontal" :style="{ backgroundColor: colorToggle }">
+    <div class="navbar display-flex flex-vertical" :style="{ backgroundColor: colorToggle }">
       <div class="logo">
         <router-link to="/home"><Picture alt="ECSESS Logo" :path="require('@/assets/ecsess-white.png')" :size="logoSize" /></router-link>
       </div>
@@ -235,7 +235,8 @@ export default class NavBar extends Vue {
 
 @media only screen and (max-width: 768px) {
   .navbar {
-    height: 5rem;
+    position: unset;
+    margin-top: 0.5rem;
   }
 
   .navBarMenuExpand {

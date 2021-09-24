@@ -15,7 +15,7 @@
         </div>
         <div>
           <h4>{{ cell.title }}</h4>
-          <TextArea :text="cell.description" />
+          <TextArea class="grid-description" :text="cell.description" />
           <Button
             v-if="cell.button"
             :clickParams="cell.buttonLink"
@@ -88,5 +88,21 @@ export default class Grid extends Vue {
 
 .cell-picture:hover {
   filter: grayscale(0);
+}
+
+@media only screen and (max-width: 768px) {
+  .grid {
+    grid-template-columns: 100%;
+  }
+
+  .grid-description {
+    display: none;
+  }
+
+  .cell {
+    border: var(--mainColor) solid 0.2rem;
+    border-radius: 0.5rem;
+    padding: 0.8rem 0.5rem;
+  }
 }
 </style>

@@ -18,9 +18,9 @@
       text="Make an appointment to talk about applying for internships and clear your roadblocks and issues with CV-building and starting projects!"
     />
     <h4 class="centered">Calendly Integration coming soon</h4>
-    <Divider />
-    <Subtitle subtitle="ECSE Internship Postings around Montreal" />
-    <div class="flex-horizontal margin-bottom">
+    <Divider class="jobs"/>
+    <Subtitle subtitle="ECSE Internship Postings around Montreal" class="jobs" />
+    <div class="flex-horizontal margin-bottom jobs">
       <Button
         :clickParams="electrical"
         :color="buttonColor"
@@ -46,7 +46,7 @@
         class="job-button"
       />
     </div>
-    <JobResults :jobResults="jobResults" />
+    <JobResults :jobResults="jobResults" class="jobs" />
   </div>
 </template>
 
@@ -120,5 +120,11 @@ export default class IndustryResources extends Vue {
 <style lang="scss" scoped>
 .job-button {
   margin: 0 0.5rem 0 0.5rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .jobs {
+    display: none;
+  }
 }
 </style>

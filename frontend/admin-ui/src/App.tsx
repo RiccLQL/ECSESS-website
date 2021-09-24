@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SidebarItems } from './components/Sidebar';
 import { Home } from './views/Home';
 import { Council } from './views/Council';
@@ -32,24 +32,50 @@ export const App = (): JSX.Element => {
     const goToLink = (): void => {
     }
 
+    const [auth, setAuth] = useState<string | null>(localStorage.getItem("auth"));
+
+    const [pw, setPw] = useState<string>("");
+
     return (
         <div className="app full-width">
-            <Router>
-                <div className="full-width margin-bottom flex-horizontal">             
-                    {routes.map((item) => {
+            {auth === 'authorized' ? 
+                <Router>
+                    <div className="full-width margin-bottom flex-horizontal">             
+                        {routes.map((item) => {
+                            return (
+                                <Link to={`/${item.path}`} key={item.path} id={`link-${item.path}`}><Button size={ButtonSizes.medium} text={item.path} handleClick={goToLink}/></Link>
+                            )
+                        })}
+                        <button onClick={() => {setPw(""); localStorage.removeItem("auth"); setAuth(null)}}>Logout</button>
+                    </div>
+                    {routes.map((item, index) => {
                         return (
-                            <Link to={`/${item.path}`} key={item.path} id={`link-${item.path}`}><Button size={ButtonSizes.medium} text={item.path} handleClick={goToLink}/></Link>
+                            <div key={index} className="flex-vertical">
+                                <Route path={`/${item.path}`} component={item.component} />
+                            </div>
                         )
                     })}
+                </Router>
+                :
+                <div>
+                    <form onSubmit={(e) => {
+                        e.preventDefault()
+                        if (pw === process.env.REACT_APP_MAIN_PASSWORD) {
+                            setAuth('authorized');
+                            localStorage.setItem("auth", 'authorized');
+                        } else {
+                            setAuth('unauthorized');
+                            localStorage.setItem("auth", 'unauthorized');
+                        }
+                        
+                    }}>
+                        <input type="password" value={pw} onChange={(e) => {setPw(e.target.value)}}/>
+                        
+                        <input type="submit" value="Login"/>
+                    </form>
+                    { auth === 'unauthorized' ? <h4>Wrong password</h4> : <></>}
                 </div>
-                {routes.map((item, index) => {
-                    return (
-                        <div key={index} className="flex-vertical">
-                            <Route path={`/${item.path}`} component={item.component} />
-                        </div>
-                    )
-                })}
-            </Router>
+            }
         </div>
     )
 }

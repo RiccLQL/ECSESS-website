@@ -3,19 +3,10 @@
     <PageCover
       title="Academic Resources"
       subtitle="Contact an academic rep, or browse academic rights and resources"
-    />
+    />    
     <Divider />
-    <Subtitle subtitle="Contact Anja, our VP Academic" />
-    <TextArea
-      text="Send your concerns, suggestions and questions directly to our VP Academic, who will help you and forward your message to the right people!"
-    />
-    <Form v-model="vpAcadForm" @handleFormSubmit="submitAcadEmail" />
-    <Divider />
-    <Subtitle subtitle="Your Rights as a Student in Engineering" />
-    <TextArea text="Working on it!" />
-    <Divider />
-    <Subtitle subtitle="Academic Events" />
-    <List :list="eventsList" />
+    <Subtitle subtitle="Academic Resources & Programs" />
+    <Grid :gridCells="resourcesGrid"/>    
     <Divider />
     <Subtitle subtitle="The Engineering Student Toolbox" />
     <div class="engineering-student-toolbox display-flex flex-vertical">
@@ -26,8 +17,17 @@
       </div>
     </div>
     <Divider />
-    <Subtitle subtitle="Academic Resources & Programs" />
-    <Grid :gridCells="resourcesGrid"/>
+    <!-- <Subtitle subtitle="Contact Anja, our VP Academic" />
+    <TextArea
+      text="Send your concerns, suggestions and questions directly to our VP Academic, who will help you and forward your message to the right people!"
+    />
+    <Form v-model="vpAcadForm" @handleFormSubmit="submitAcadEmail" />
+    <Divider />
+    <Subtitle subtitle="Your Rights as a Student in Engineering" />
+    <TextArea text="Working on it!" />
+    <Divider /> -->
+    <Subtitle subtitle="Academic Events" />
+    <List :list="eventsList" />
   </div>
 </template>
 
@@ -159,5 +159,11 @@ export default class AcademicResources extends Vue {
     margin: 0.5rem 0;
     padding: 0.2rem 1rem;
     border-radius: 0.2rem;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .toolbox-entry {
+      flex-direction: column;
+    }
   }
 </style>

@@ -15,7 +15,7 @@
         </div>
         <div class="fifty list-text">
           <h4>{{ listItem.title }}</h4>
-          <TextArea :text="listItem.description" />
+          <TextArea class="list-description" :text="listItem.description" />
           <Button
             :clickParams="listItem.buttonLink"
             :color="buttonColor"
@@ -30,7 +30,7 @@
       <div v-else class="flex-horizontal full-width">
         <div class="fifty list-text">
           <h4>{{ listItem.title }}</h4>
-          <TextArea :text="listItem.description" />
+          <TextArea class="list-description" :text="listItem.description" />
           <Button
             :clickParams="listItem.buttonLink"
             :color="buttonColor"
@@ -105,5 +105,15 @@ export default class List extends Vue {
 
 .list-image {
   padding: 1.5rem 2rem 1.5rem 2rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .list-description {
+    display: none;
+  }
+
+  .list-image {
+    display: none;
+  }
 }
 </style>

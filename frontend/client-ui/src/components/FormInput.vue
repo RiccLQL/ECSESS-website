@@ -166,6 +166,7 @@ input {
   border-radius: 0.2rem;
   text-align: left;
   width: 40rem;
+  margin: 0 0.5rem;
 }
 
 .interactive {
@@ -205,5 +206,15 @@ textarea {
 ::-ms-input-placeholder {
   /* Microsoft Edge */
   color: var(--textColor);
+}
+
+@media only screen and (max-width: 768px) {
+  input {
+    width: 70vw;
+  }
+
+  textarea {
+    width: 70vw;
+  }
 }
 </style>

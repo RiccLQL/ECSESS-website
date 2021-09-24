@@ -330,4 +330,10 @@ p {
 .cursor-pointer {
   cursor: pointer;
 }
+
+@media only screen and (max-width: 768px) {
+  .app-margins {
+    margin: 0 15vw;
+  }
+}
 </style>

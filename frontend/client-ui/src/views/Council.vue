@@ -35,13 +35,13 @@ export default class Council extends Vue {
   private async created(): Promise<void> {
     this.councilExecs = await axios.get(`/council/members/execs`).then((result) => {
       const execsRawData: MemberModel[] = result.data.data;
-      const execsProcessed: GridCellObject[] = execsRawData ? execsRawData.map(exec => ({ title: exec.name, description: `${exec.position} -- ${exec.description}`, image: { alt: exec.name, path: exec.image }, button: `Email ${exec.email}`, buttonLink: `mailto:${exec.email}` })) : [];
+      const execsProcessed: GridCellObject[] = execsRawData ? execsRawData.map(exec => ({ title: `${exec.name} // ${exec.position}`, description: exec.description, image: { alt: exec.name, path: exec.image }, button: `Email ${exec.email}`, buttonLink: `mailto:${exec.email}` })) : [];
       return execsProcessed;
     })
 
     this.councilReps = await axios.get(`/council/members/reps`).then((result) => {
       const execsRawData: MemberModel[] = result.data.data;
-      const execsProcessed: GridCellObject[] = execsRawData ? execsRawData.map(exec => ({ title: exec.name, description: `${exec.position} -- ${exec.description}`, image: { alt: exec.name, path: exec.image }, button: `Email ${exec.email}`, buttonLink: `mailto:${exec.email}` })) : [];
+      const execsProcessed: GridCellObject[] = execsRawData ? execsRawData.map(exec => ({ title: `${exec.name} // ${exec.position}`, description: exec.description, image: { alt: exec.name, path: exec.image }, button: `Email ${exec.email}`, buttonLink: `mailto:${exec.email}` })) : [];
       return execsProcessed;
     })
   }

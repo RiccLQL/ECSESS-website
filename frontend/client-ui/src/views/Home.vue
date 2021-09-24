@@ -181,3 +181,15 @@ export default class Home extends Vue {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+@media only screen and (max-width: 768px) {
+  .sixty {
+    all: unset;
+  }
+
+  .fourty {
+    all: unset;
+  }
+}
+</style>
