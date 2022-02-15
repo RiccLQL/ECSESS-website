@@ -1,3 +1,16 @@
+# How to setup dev environment
+
+1. Clone the repository if you have not done so.
+2. `cd frontend/admin-ui`
+3. `npm install`
+4. `npm run start`
+
+# Deploying into Netlify
+
+1. Push to master
+2. Yea.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
